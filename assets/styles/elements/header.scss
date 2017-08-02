@@ -1,0 +1,872 @@
+#dvc-header {
+    background: url(../images/bg-header.jpg) no-repeat 50% 50% transparent;
+    background-size: cover;
+    color: $white;
+    border-top: 3px solid $themeColor;    
+	width:100%;
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height:100%;
+        background: url(../images/overlay-header.png) repeat-x top center transparent;
+        position: absolute;
+        z-index: 3;
+    }
+    .dvc-header {
+        &-top {
+            padding: 15px 0 0;
+            z-index: 5;
+            position: relative;
+            @media(max-width: 767px) {
+                padding: 10px 0 0;
+            }
+            >.container {
+                @media(min-width: 1200px) and (max-width: 1919px) {
+                    width: 100%;
+                }
+            }
+            &-inner {
+                >div {
+                    float: left;
+                }
+                .dvc {
+                    &-logo {
+                        width: 25%;
+                        position: relative;
+                        // @media(max-width: 1919px) {
+                        //     width: 16%;
+                        // }
+                        @media(max-width: 1199px) {
+                            width: 20%;
+                        }
+                        @media(max-width: 767px) {
+                            width: 100%;
+                            padding-right: 60px;
+                            margin-bottom: 12px;
+                        }
+                        .navbar-toggle {
+                            margin: 0;
+                            padding: 10px;
+                            border: 0;
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            transform: translate(0, -50%);
+                            display: none;
+                            .icon-bar {
+                                background: #fff;
+                                width: 25px;
+                                height: 3px;
+                            }
+                            
+                            @media(max-width: 767px) {
+                                display: block;
+                            }
+                        }
+                    }
+                    &-menu-style {
+                        @media(min-width: 768px) {
+                            .navbar {
+                                margin: 0;
+                                padding: 0;
+                                border: 0;
+                                .navbar-collapse {
+                                    padding: 0;
+                                    .nav {
+                                        width: 100%;
+                                        // @media(max-width: 1919px) {
+                                        //     text-align: right;
+                                        // }
+                                        .menu-item {
+                                            display: inline-block;
+                                            float: none;
+                                            position: relative;
+                                            margin: 0 13px;
+                                            @media(max-width: 1919px) {
+                                                margin: 0 5px;
+                                            }
+                                            &.find-properties-menu {
+                                                img {
+                                                    top: 55%;
+                                                }
+                                            }
+                                            >a {
+                                                color: #fff;
+                                                font-size: 18px;
+                                                position: relative;
+                                                padding: 10px 10px 10px 35px;
+                                                @media(max-width: 1919px) {
+                                                    font-size: 14px;
+                                                    padding: 5px 10px 5px 30px;
+                                                }
+                                                @media(max-width: 991px) {
+                                                    padding: 0 10px 0 5px;
+                                                }
+                                                img {
+                                                    width: 27px;
+                                                    position: absolute;
+                                                    top: 50%;
+                                                    left: 0;
+                                                    transform: translate(0, -50%);
+                                                    height: 2rem;
+                                                    width: 2.3rem;
+                                                    @media(max-width: 991px) {
+                                                        display: none;
+                                                    }
+                                                }
+                                                &:hover,
+                                                    &:focus {
+                                                    background: none;
+                                                }
+                                                &:hover {
+                                                    color: $themeColor;
+                                                }
+                                                i {
+                                                    margin-left: 5px;
+                                                }
+                                            }
+                                            .note {
+                                                background: $yellow;
+                                                font-size: 16px;
+                                                border-radius: 50%;
+                                                position: absolute;
+                                                right: -8px;
+                                                top: -8px;
+                                                display: block;
+                                                text-align: center;
+                                                line-height: 20px;
+                                                width: 20px;
+                                                color: #fff;
+                                                @media(max-width: 1919px) {
+                                                    font-size: 10px;
+                                                    line-height: 16px;
+                                                    width: 16px;
+                                                }
+                                            }
+                                            &.active {
+                                                a {
+                                                    color: $themeColor;
+                                                }
+                                            }
+                                            &.none-text {
+                                                >a {
+                                                    padding-left: 15px;
+                                                }
+                                            }
+                                            &.none-icon {
+                                                >a {
+                                                    padding-left: 10px;
+                                                }
+                                            }
+                                            &.menu-border {
+                                                padding-left: 10px;
+                                                border-left: 1px solid $themeColor;
+                                                margin-left: 10px;
+                                            }
+                                            &.icon-big {
+                                                >a {
+                                                    padding-left: 35px;
+                                                }
+                                            }
+                                            &.open {
+                                                >a {
+                                                    background: transparent;
+                                                }
+                                            }
+                                            .dropdown-menu {
+                                                background: rgba(0, 0, 0, 0.5);
+                                                box-shadow: none;
+                                                border: 0;
+                                                left: auto;
+                                                right: 0;
+                                                border-radius: 0;
+                                                &.opend {
+                                                    display: block;
+                                                }
+                                                li {
+                                                    display: block;
+                                                    a {
+                                                        color: #fff;
+                                                        padding: 7px 20px;
+                                                        background: transparent;
+                                                        &:hover {
+                                                            color: $themeColor;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        @media(max-width: 768px) {
+                            .navbar {
+                                margin: 0;
+                                padding: 0;
+                                border: 0;
+                                min-height: 0;
+                                .navbar-collapse {
+                                    padding: 0;
+                                    .nav {
+                                        margin: 0;
+                                        text-align: left;
+                                        .menu-item {
+                                            >a {
+                                                position: relative;
+                                                padding: 10px 10px 10px 35px;
+                                                color: #fff;
+                                                @media(max-width: 767px){
+                                                    display: inline-block;
+                                                }
+                                                &:hover,
+                                                    &:focus {
+                                                    background: none;
+                                                }
+                                                &:hover {
+                                                    color: $themeColor;
+                                                }
+                                                img {
+                                                    position: absolute;
+                                                    top: 50%;
+                                                    left: 0;
+                                                    transform: translate(0, -50%);
+                                                    @media(max-width: 767px){
+                                                        width: 24px;
+                                                    }
+                                                }
+                                            }
+                                            &.active {
+                                                a {
+                                                    color: $themeColor;
+                                                }
+                                            }
+                                            .note {
+                                                background: $yellow;
+                                                line-height: 20px;
+                                                width: 20px;
+                                                display: block;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 0;
+                                                top: 0;
+                                                border-radius: 50%;
+                                                font-size: 12px;
+                                                color: #fff;
+                                                @media(max-width: 767px){
+                                                    display: inline-block;
+                                                    top: -11px;
+                                                    position: relative;
+                                                    font-size: 10px;
+                                                    width: 18px;
+                                                    line-height: 18px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &-menu {
+                        width: 50%;
+                        text-align: center;
+                        // @media(max-width: 1919px) {
+                        //     width: 55%;
+                        // }
+                        @media(max-width: 1199px) {
+                            width: 80%;
+                        }
+                        @media(max-width: 767px) {
+                            width: 100%;
+                        }
+                    }
+                    &-account {
+                        width: 25%;
+                        text-align: right;
+                        color: $themeColor;
+                        font-style: italic;
+                        float: right;
+                        @media(max-width: 1919px) {
+                            font-size: 12px;
+                        }
+                        @media(max-width: 1199px) {
+                            display: none;
+                        }
+                        .navbar {
+                            .navbar-collapse {
+                                .navbar-nav {
+                                    .menu-item {
+                                        margin: 5px 0;
+                                        vertical-align: middle;
+                                        &:hover {
+                                            cursor: pointer;
+                                        }
+                                        .dropdown-menu-logout {
+                                            li {
+                                                &:hover {
+                                                    a {
+                                                        color: white;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        @media (min-width: 1919px) {
+                                            margin: 10px 0;
+                                        }
+                                        >a {
+                                            padding: 0 10px;
+                                            border-left: 1px solid #fff;
+                                            &.none-border {
+                                                border-left: 0;
+                                            }
+                                        }
+                                        &:first-child {
+                                            >a {
+                                                border-left: 0;
+                                            }
+                                        }
+                                        .img-avatar {
+                                            border-radius: 50%;
+                                            width: 30px;
+                                            height: 30px;
+                                            box-shadow: inset 0 0 5px #808080;
+                                        }
+                                        .dvc-icon-min {
+                                            display: block;
+                                            position: relative;
+                                            width: 30px;
+                                            line-height: 28px;
+                                            height: 30px;
+                                            color: #fff;
+                                            border: 1px solid #f33536;
+                                            border-radius: 50%;
+                                            text-align: center;
+                                            font-size: 15px;
+                                            i{
+                                                margin: 0;
+                                            }
+                                        }
+                                    }
+                                    &.login {
+                                        .menu-item {
+                                            margin: 0;
+                                            a {
+                                                padding: 0 5px;
+                                                border: 0;
+                                                img {
+                                                    position: relative;
+                                                    top: 0;
+                                                    transform: inherit;
+                                                }
+                                            }
+                                            &.note-menu{
+                                                margin-right: 15px;
+                                            }
+                                            &.menu-account{
+                                                >a{
+                                                    padding-top: 2px;
+                                                    border-left: 1px solid $themeColor;
+                                                    padding-left: 10px;
+                                                    cursor: pointer;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-middle {
+            margin-top: 110px;
+            padding: 15px 0;
+            background: rgba(32, 39, 48, 0.8);
+            background: -moz-linear-gradient(top, rgba(32, 39, 48, 0.8) 0%, rgba(32, 39, 48, 0.8) 50%, rgba(32, 39, 48, 0.8) 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(32, 39, 48, 0.8)), color-stop(50%, rgba(32, 39, 48, 0.8)), color-stop(100%, rgba(32, 39, 48, 0.8)));
+            background: -webkit-linear-gradient(top, rgba(32, 39, 48, 0.8) 0%, rgba(32, 39, 48, 0.8) 50%, rgba(32, 39, 48, 0.8) 100%);
+            background: -o-linear-gradient(top, rgba(32, 39, 48, 0.8) 0%, rgba(32, 39, 48, 0.8) 50%, rgba(32, 39, 48, 0.8) 100%);
+            background: -ms-linear-gradient(top, rgba(32, 39, 48, 0.8) 0%, rgba(32, 39, 48, 0.8) 50%, rgba(32, 39, 48, 0.8) 100%);
+            background: linear-gradient(to bottom, rgba(32, 39, 48, 0.8) 0%, rgba(32, 39, 48, 0.8) 50%, rgba(32, 39, 48, 0.8) 100%);
+            @media(min-width: 1200px) and (max-width: 1919px) {
+                padding: 10px 0;
+            }
+            @media(max-width: 1919px) {
+                margin-top: 50px;
+            }
+            @media(max-width: 1199px) {
+                margin-top: 30px;
+            }
+            >.container {
+                @media(min-width: 1200px) and (max-width: 1919px) {
+                    width: 100%;
+                }
+            }
+            &-inner {
+                display: table;
+                @media(max-width: 1199px) {
+                    display: block;
+                }
+                >div {
+                    display: table-cell;
+                    vertical-align: middle;
+                    @media(max-width: 1199px) {
+                        display: block;
+                        width: 100%;
+                        text-align: center;
+                        margin-bottom: 10px;
+                    }                    
+                }
+                .dvc-sub-logo,
+                .dvc-author {
+                    @media screen and (max-width: 580px) {
+                        display: none;
+                    }
+                }
+                .dvc-header-avatar {
+                    padding-right: 30px;
+                    @media(max-width: 1919px) {
+                        padding-right: 5px;
+                    }
+                    @media(max-width: 1199px) {
+                        padding: 0;
+                    }
+                    .img-avatar {
+                        border-radius: 50%;
+                        width: 100px;
+                        height: 100px;
+                        position: relative;
+                        margin-top: -50px;
+                        display: inline-block;
+                        @media(min-width: 1200px) and (max-width: 1919px) {
+                            margin-top: -30px;
+                        }
+                        @media(max-width: 1199px) {
+                            display: inline-block;
+                        }
+                        img {
+                            border-radius: 50%;
+                            width: 100%;
+                            height: 100%;
+                            box-shadow: 0 0 5px #808080 inset;
+                        }
+                        &:before {
+                            border-radius: 50%;
+                            box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, .35);
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 1;
+                            content: '';
+                        }
+                    }
+                }
+                .dvc-header-contact {
+                    @media(min-width: 1200px) and (max-width: 1919px) {
+                        width: 12%;
+                        padding: 0;
+                        text-align: center;
+                    }
+                    .dvc-icon-text {
+                        display: inline-block;
+                        text-align: center;
+                        margin: 0 15px;
+                        position: relative;
+                        @media(min-width: 1920px) {
+                            top: -13px;
+                        }
+                        @media(min-width: 1200px) and (max-width: 1919px) {
+                            margin: 0 5px;
+                            top: -10px;
+                        }
+                    }
+                }
+                .dvc-socials {
+                    padding: 0 10px;
+                    @media(min-width: 1200px) and (max-width: 1919px) {
+                        padding: 0;
+                        width: 11%;
+                    }
+                    a {
+                        display: inline-block;
+                        margin: 13px;
+                        font-size: 22px;
+                        color: $themeColor;
+                        @media(min-width: 1200px) and (max-width: 1919px) {
+                            width: 31.33%;
+                            font-size: 20px;
+                            text-align: center;
+                            margin: 0;
+                        }
+                        @media(max-width: 1199px) {
+                            margin: 10px;
+                        }
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
+                }
+                .dvc-sub-logo {
+                    padding: 0 40px;
+                    @media(min-width: 1200px) and (max-width: 1919px) {
+                        padding: 0;
+                        width: 8%;
+                        text-align: center;
+                    }
+                    @media(min-width: 768px) and (max-width: 1199px) {
+                        width: 33.33%;
+                        float: left;
+                    }
+                }
+                .dvc-author {
+                    text-align: center;
+                    @media(min-width: 1200px) and (max-width: 1919px) {
+                        width: 20%;
+                    }
+                    @media(min-width: 768px) and (max-width: 1199px) {
+                        width: 33.33%;
+                        float: left;
+                    }
+                    .dvc-author-name {
+                        font-size: 30px;
+                        font-weight: 300;
+                        margin: 0;
+                        white-space: nowrap;
+                        @media(min-width: 1200px) and (max-width: 1919px) {
+                            font-size: 25px;
+                        }
+                        img {
+                            position: relative;
+                            top: -15px;
+                        }
+                    }
+                    .dvc-author-position {
+                        font-size: 11px;
+                        margin: 0;
+                        @media(min-width: 1200px) and (max-width: 1919px) {
+                            font-size: 10px;
+                        }
+                    }
+                }
+                .dvc-slogan {
+                    text-align: center;
+                    @media(min-width: 1200px) and (max-width: 1919px) {
+                        width: 19%;
+                    }
+                    @media(min-width: 768px) and (max-width: 1199px) {
+                        width: 33.33%;
+                        float: left;
+                    }
+                    .dvc-slogan-text {
+                        font-size: 18px;
+                        font-style: italic;
+                        font-weight: 300;
+                        max-width: 300px;
+                        display: inline-block;
+                        margin: 0;
+                        @media(min-width: 1200px) and (max-width: 1919px) {
+                            font-size: 14px;
+                        }
+                    }
+                }
+                .dvc-contact-info {
+                    @media(min-width: 768px) and (max-width: 1199px) {
+                        clear: both;
+                    }
+                    >div {
+                        display: inline-block;
+                        margin: 0 10px;
+                    }
+                }
+            }
+        }
+    }
+    &.dvc_main-header-mini {
+        position: relative;
+        &:before {
+            background: url(../images/hartcourts/blur-header.png) repeat-x 50% 0 transparent;
+            height: 65px;
+        }
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(../images/hartcourts/bg-header-hc.jpg) no-repeat 50% 50% transparent;
+            content: '';
+            z-index: 2;
+            filter: blur(5px);
+        }
+        .dvc-header-top {
+            padding: 10px 0;
+            .dvc-logo {
+                width: 17%;
+                margin-bottom: 0;
+            }
+            .dvc-menu {
+                @media(min-width: 1920px) {
+                    width: 50%;
+                }
+                @media(min-width: 1200px) and (max-width: 1919px) {
+                    width: 54%;
+                }
+                @media(min-width: 768px) {
+                    margin-top: 5px;
+                }
+                .navbar {
+                    min-height: 0;
+                    .navbar-collapse {
+                        border: 0;
+                    }
+                }
+            }
+            .dvc-account {
+                @media(min-width: 1200px) {
+                    width: 21%;
+                }
+                @media(min-width: 768px) {
+                    margin-top: 5px;
+                }
+                .navbar {
+                    min-height: 0;
+                    .navbar-nav {
+                        .menu-item {
+                            @media (min-width: 1919px) {
+                                margin: 0 10px;
+                            }
+                            &.img-avatar {
+                                img {
+                                    width: 30px;
+                                    height: 30px;
+                                    box-shadow: 0 0 5px #808080 inset;
+                                    border-radius: 50%;
+                                }
+                            }
+                            &.dvc-icon {
+                                a {
+                                    border: 1px solid $themeColor;
+                                    padding: 4px;
+                                    text-align: center;
+                                    width: 30px;
+                                    border-radius: 50%;
+                                    i {
+                                        margin: 0;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dvc-form-search {
+    background: $white-light;
+    padding: 10px 15px 0;
+    box-shadow: 0 8px 18px rgba(35, 31, 32, 0.2), 0 -8px 18px rgba(35, 31, 32, 0.2);
+    .dvc-form-search-inner {
+        margin: 0 -0.5%;
+        input,
+        select {
+            font-size: 18px;
+            background-color: transparent;
+            color: $baseColor;
+            border: 1px solid $borderColor2;
+            border-radius: 4px;
+            @media(min-width: 1200px) and (max-width: 1600px) {
+                font-size: 15px;
+            }
+        }
+        select {
+            background-color: #fff;
+        }
+        .dvc-form-col {
+            float: left;
+            margin: 0 0.5% 10px;
+        }
+        .dvc-form-key {
+            width: 28%;
+            @media(min-width: 1200px) and (max-width: 1600px) {
+                width: 26%;
+            }
+            @media(min-width: 768px) and (max-width: 1199px) {
+                width: 57%;
+            }
+            @media(max-width: 767px) {
+                width: 99%;
+            }
+            input {
+                border: 0;
+                background: url('../images/hartcourts/icon-gps.png') no-repeat 100% 50% transparent;
+                padding-right: 35px;
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+        }
+        .dvc-form-beds,
+        .dvc-form-baths {
+            width: 8%;
+            @media(min-width: 1200px) and (max-width: 1600px) {
+                width: 7%;
+            }
+            @media(min-width: 768px) and (max-width: 1199px) {
+                width: 20%;
+            }
+            @media(max-width: 767px) {
+                width: 49%;
+            }
+        }
+        .dvc-form-min-price,
+        .dvc-form-max-price,
+        .dvc-form-max-price-2 {
+            width: 10%;
+            @media(min-width: 1200px) and (max-width: 1600px) {
+                width: 11%;
+            }
+            @media(min-width: 992px) and (max-width: 1199px) {
+                width: 20%;
+            }
+            @media(min-width: 768px) and (max-width: 991px) {
+                width: 25%;
+            }
+            @media(min-width: 600px) and (max-width: 767px) {
+                width: 32.33%;
+            }
+            @media(max-width: 599px) {
+                width: 99%;
+            }
+        }
+        .dvc-form-more {
+            width: 10%;
+            @media(min-width: 992px) and (max-width: 1199px) {
+                width: 18%;
+            }
+            @media(min-width: 768px) and (max-width: 991px) {
+                width: 21%;
+            }
+            @media(max-width: 767px) {
+                width: 49%;
+            }
+        }
+        .dvc-form-submit {
+            width: 8%;
+            @media(min-width: 1200px) and (max-width: 1600px) {
+                width: 9%;
+            }
+            @media(min-width: 992px) and (max-width: 1199px) {
+                width: 17%;
+            }
+            @media(min-width: 768px) and (max-width: 991px) {
+                width: 100%;
+            }
+            @media(max-width: 767px) {
+                width: 49%;
+            }
+            button {
+                width: 100%;
+                border-radius: 4px;
+                background: $redDarker;
+                @media(min-width: 1200px) and (max-width: 1600px) {
+                    font-size: 14px;
+                    padding: 0;
+                    text-align: center;
+                }
+                &:hover {
+                    background: #011929;
+                }
+            }
+        }
+        .dvc-form-control {
+            width: 25%;
+            @media(min-width: 1200px) and (max-width: 1919px) {
+                width: 30%;
+            }
+            @media(max-width: 1199px) {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+            }
+            @media(min-width: 768px) and (max-width: 1199px) {
+                margin: 0 0 10px !important;
+            }
+            @media(max-width: 479px) {
+                margin: 0 0 10px !important;
+            }
+            >div {
+                float: left;
+                width: 50%;
+                @media(max-width: 1199px) {
+                    width: 49%;
+                    margin: 0 0.5%;
+                }
+                @media(max-width: 479px) {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+            .dvc-form-advanced {
+                text-align: center;
+                padding-top: 15px;
+                padding-left: 5px;
+                @media(max-width: 1919px) {
+                    padding-top: 10px;
+                    text-align: left;
+                }
+                @media(max-width: 479px) {
+                    margin-bottom: 15px;
+                    text-align: center;
+                }
+                a {
+                    color: #fff;
+                    &:hover {
+                        color: $themeColor;
+                    }
+                    i {
+                        color: $themeColor;
+                        font-size: 26px;
+                        margin-right: 5px;
+                        vertical-align: middle;
+                    }
+                }
+            }
+            .dvc-form-submit {
+                button {
+                    width: 100%;
+                    &:hover {
+                        background: #fff;
+                        color: $themeColor;
+                    }
+                }
+            }
+            &:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+        }
+        &:after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+        .btn-form-mobile {
+            width: 100%;
+            button {
+                width: 100%;
+            }
+        }
+    }
+}

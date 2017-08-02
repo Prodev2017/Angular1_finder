@@ -1,0 +1,30 @@
+.sweet-alert {
+  width: 600px;
+  text-align: left;
+  h2 {
+    font-size: 24px;
+    color: #5d5d5d;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .btn {
+    min-width: 100px;
+    &.btn-primary {
+      border-color: #f33536;
+      background-color: #f33536;
+    }
+  }
+  input[type='text'] {
+    width: 100%;
+    border-color: $grey-2;
+  }
+  .sa-error-container {
+    display: none;
+  }
+  .sa-button-container {
+    text-align: right;
+    padding-top: 15px;
+    border-top: 1px solid $grey-2;
+    margin-top: 20px;
+  }
+}

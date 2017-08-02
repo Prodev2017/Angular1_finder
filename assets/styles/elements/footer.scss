@@ -1,0 +1,161 @@
+.dvc_main-footer-top {
+    background: url(../images/bg-footer.jpg) no-repeat 50% 50% transparent;
+    background-size: cover;
+    padding: 40px 0;
+    .title-footer {
+        margin: 0 0 100px;
+        font-size: 24px;
+        text-align: center;
+        color: #fff;
+        @media(max-width: 767px) {
+            margin: 0 0 40px;
+        }
+        @media(max-width: 479px) {
+            font-size: 18px;
+        }
+    }
+    .list-address {
+        max-width: 800px;
+        margin: 0 auto;
+        .item-address {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            margin-bottom: 5px;
+            @media(max-width: 767px) {
+                width: 33.33%;
+            }
+            @media(max-width: 479px) {
+                width: 50%;
+            }
+            a {
+                color: #fff;
+                text-transform: uppercase;
+                @media(max-width: 479px) {
+                    font-size: 13px;
+                }
+                @media(max-width: 479px) {
+                    font-size: 12px;
+                }
+                &:hover {
+                    color: $themeColor;
+                }
+            }
+        }
+    }
+}
+
+.dvc_main-footer {
+    padding: 55px 0 25px;
+    .footer-top {
+        padding-bottom: 35px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #cbcbdb;
+        .footer-top-left {
+            width: 70%;
+            float: left;
+            @media(max-width: 767px) {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .footer-top-right {
+            width: 30%;
+            float: left;
+            padding-top: 9px;
+            @media(max-width: 767px) {
+                width: 100%;
+            }
+        }
+        &:after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+        .logo {
+            display: inline-block;
+        }
+        .menu-footer {
+            display: inline-block;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            vertical-align: bottom;
+            margin-bottom: 4px;
+            @media(max-width: 767px) {
+                width: 100%;
+                text-align: center;
+                display: block;
+                margin: 10px 0 0;
+            }
+            li {
+                display: inline-block;
+                margin-left: 10px;
+                @media(max-width: 767px) {
+                    margin: 5px;
+                }
+                a {
+                    color: $grey;
+                    &:hover {
+                        color: $themeColor;
+                    }
+                }
+            }
+        }
+        .social-list {
+            text-align: right;
+            @media(max-width: 767px) {
+                text-align: center;
+            }
+            a {
+                color: $colorSocial;
+                font-size: 18px;
+                margin-left: 10px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                &:hover {
+                    color: $themeColor;
+                }
+            }
+        }
+    }
+    .footer-bottom {
+        .footer-bottom-left {
+            width: 60%;
+            float: left;
+            @media(max-width: 767px) {
+                width: 100%;
+                text-align: center;
+            }
+            a {
+                color: $linkColor-1;
+                &:hover {
+                    color: $themeColor;
+                }
+            }
+        }
+        .footer-bottom-right {
+            width: 40%;
+            float: left;
+            text-align: right;
+            @media(max-width: 767px) {
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+            a {
+                color: $linkColor-1;
+                text-transform: uppercase;
+                &:hover {
+                    color: $themeColor;
+                }
+            }
+        }
+        &:after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+    }
+}

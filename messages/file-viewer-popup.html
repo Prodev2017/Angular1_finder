@@ -1,0 +1,20 @@
+<div class="file-viewer-popup-background"  ng-class="{'is-showing': isShowing}">
+      <!-- <div  style="position:absolute; top:50%; right:5px; color:blue; cursor: pointer;" ng-click="nextFile()" ng-if="index < files.length - 1">NEXT</div>
+      <div  style="position:absolute; top:50%; left:5px; color:blue;cursor: pointer;" ng-click="prevFile()" ng-if="index >0">Prev</div> -->
+     
+  <div class="file-viewer-popup-wrapper {{ fileType }}-popup">
+
+    <div class="file-viewer-popup-content" >
+    
+      
+      <div class="popup-close-button" ng-click="closePopup()">&times;</div>
+      <img ng-if="fileType === 'image'" ng-src="{{ fileUrl | trusted }}" alt="{{ fileUrl }}">
+      <iframe ng-src="{{ fileUrl | trusted }}" class="pdf-viewer" ng-if="fileType === 'pdf'"></iframe>
+      <div ng-if="fileType === 'unsupported'">
+        Can not preview this file
+      </div>
+    </div>
+  </div>
+   <i class="fa fa-angle-left" style="font-size: 9rem; color:white;position:absolute; top:50%; left:10px;cursor: pointer;" ng-click="prevFile()" ng-if="index >0"></i>
+      <i class="fa fa-angle-right" style="font-size: 9rem; color:white;position:absolute; top:50%; right:10px;cursor: pointer;" ng-click="nextFile()" ng-if="index < files.length - 1"></i>
+</div>

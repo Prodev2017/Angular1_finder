@@ -1,0 +1,31 @@
+<property-tour-pane>
+    <section class="toolbar">
+        <div class="tour-selector">
+            <div class="input-group">
+                <select ng-model="ptc.currentTour" class="form-control" ng-change="ptc.SwitchTour()">
+                    <option ng-repeat="option in ptc.propertyTours.mytours" ng-selected="option.name.toLowerCase() == ptc.currentTour.toLowerCase()" value="{{option.name}}">{{option.name}}</option>
+                    <optgroup label="Tours Created For Me" ng-show="ptc.propertyTours.agenttours.length > 0">
+                        <option ng-repeat="option in ptc.propertyTours.agenttours"  value="{{option.name}}">{{option.name}}</option>
+                    </optgroup>
+                </select>
+                <span class="input-group-addon btn-tour">View Tour</span>
+            </div>
+			<div class="reala-form-col reala-form-col-filter-listing">
+				<section class="filter-wrapper">
+					<button class="all-detail" ng-show="true" ng-click="ptc.showExtended=!ptc.showExtended">Details</button>
+				</section>
+			</div>
+            <!-- <i class="card-toggle fa btn-caret" ng-class="ptc.showExtended ? 'fa-caret-down' : 'fa-caret-up'" ng-click="ptc.showExtended = !ptc.showExtended"></i> -->
+        </div>
+    </section>
+    <section class="properties">
+        <div class="location">
+            <label>
+                <img src="images/property-tours.svg" alt="Map Icon">
+                <span>Starting Location:</span>
+            </label>
+            <input type="text" placeholder="Enter Address" id="rea_tour_startinglocation" class="form-control" ng-model="ptc.startingLocation">
+        </div>
+        <property-tour-card  ng-repeat="property in ptc.properties track by $index"></property-tour-card>
+    </section>
+</property-tour-pane>

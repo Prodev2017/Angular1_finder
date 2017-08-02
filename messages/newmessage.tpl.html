@@ -1,0 +1,91 @@
+<section class="body header-message bottom" ng-class="{'show-shared-files': nmc.isShowingSharedFiles}">
+    <div class="wrap-message-and-search-bottom">
+        <div class="message-wrapper">
+            <div class="btn-group" uib-dropdown>
+                <button class="btn btn-add-message" uib-dropdown-toggle>
+                    <span class="icon icon-add-proper"></span>
+                </button>
+                <ul class="dropdown-menu list-attach-proper" uib-dropdown-menu  role="menu" aria-labelledby="single-button">
+                    <li role="menuitem" ng-click="mpc.AddPropertySearch(nmc.msg)" class="attach-proper-item">
+                        <a href="" title="Attach Property Search" class="link-attach">
+                            <div class="icon-attach-wrapper">
+                                <img class="icon-attach" src="images/hartcourts/icon-attach-search.png">
+                            </div>
+                            <div class="desc">
+                                <span>Attach Property Search</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="menuitem" ng-click="mpc.AddPropertyTour(nmc.msg)" class="attach-proper-item">
+                        <a href="" title="Attach Property Tour" class="link-attach">
+                            <div class="icon-attach-wrapper">
+                                <img class="icon-attach" src="images/hartcourts/icon-attach-tour.png">
+                            </div>
+                            <div class="desc">
+                                <span>Attach Property Tour</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="menuitem" ng-click="mpc.AddPropertyList(nmc.msg)" class="attach-proper-item">
+                        <a href="" title="Attach Property Tour" class="link-attach">
+                            <div class="icon-attach-wrapper">
+                                <img class="icon-attach" src="images/hartcourts/icon-attach-list.png">
+                            </div>
+                            <div class="desc">
+                                <span>Attach Property List</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="menuitem" class="attach-proper-item" ng-click="mpc.AddUploadFile(nmc.msg)">
+                        <a href="" title="Attach Property Tour" class="link-attach">
+                            <div class="icon-attach-wrapper">
+                                <img class="icon-attach" src="images/hartcourts/icon-attach-file.png">
+                            </div>
+                            <div class="desc">
+                                <span>Attach File</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <input type="file" id="fileupload"/>
+            </div>
+            <!-- <div class="group-emoticon">
+                <button class="btn btn-smell" uib-dropdown-toggle>
+                    <i class="fa fa-smile-o"></i>
+                </button>
+                <ul class="dropdown-menu list-icon-emoticon" uib-dropdown-menu  role="menu" aria-labelledby="single-button">
+                    <li role="menuitem">Emoticon List</li>
+                </ul>
+            </div> -->
+            <div class="input-wrapper">
+          
+                <textarea type="text" rows="1" id="rea_message_new_input" placeholder="Enter New Message Here..." ng-model="nmc.msg.bodyText" 
+                ng-change="nmc.TextChanged()" data-emojiable="true" ng-focus="nmc.TextChanged()" class="inp-textarea" onClick="this.setSelectionRange(0, this.value.length)"></textarea>
+            </div>
+            <div class="cancel-save">
+                <button class="btn btn-cancel" ng-disabled="!nmc.showControls" ng-click="nmc.ClearMessage()">Cancel</button>
+                <button class="btn btn-send" ng-disabled="!nmc.showControls" ng-class="nmc.showControls?'active':''" ng-click="mpc.AddMessage($event); nmc.ClearMessage();">Send</button>
+            </div>
+        </div>
+        <div class="search-wrapper">
+            <div class="header-message top">
+                <div class="message-search">
+                    <input id="rea_message_search" type="text" class="form-control inp-search" placeholder="Search Messages" ng-click="mpc.ClickSearch()" ng-keydown="mpc.TriggerSearch($event)" ng-model="mpc.searchBottom">
+                    <button ng-click="" class="btn-search">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+                <div class="wrapp-btn-scroll">
+                    <button class="btn btn-scroll-up scrolltostart" ng-click="mpc.Search(-1)" ng-disabled="mpc._atTop">
+                    <span class="icon icon-scroll-up"></span>
+                    </button>
+                    <button class="btn btn-scroll-down scrolltoend" ng-click="mpc.Search(1)" ng-disabled="mpc._atBottom">
+                    <span class="icon icon-scroll-down"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <uploaded-files is-showing-shared-files="nmc.isShowingSharedFiles" files="mpc.files"></uploaded-files>
+</section>

@@ -1,0 +1,81 @@
+<div class="reala-search-wrapper">
+  <div class="reala-search-inner">
+    <div class="reala-form-col reala-form-col-select-container">
+      <select ng-model="plc.currentList" class="form-control select-control" ng-change="plc.SwitchList()">
+          <option ng-repeat="option in plc.propertyLists.mylists" ng-selected="option.name.toLowerCase()==plc.currentList.toLowerCase()" value="{{option.name}}">{{option.name}}</option>
+          <optgroup label="Lists Created For Me" ng-show="plc.propertyLists.agentlists.length>0">
+              <option ng-repeat="option in plc.propertyLists.agentlists"  value="{{option.name}}">{{option.name}}</option>
+          </optgroup>
+          <option ng-selected="plc.currentList=='All Properties'" value="All Properties">All Properties</option>
+      </select>
+  </div>
+  <div class="reala-form-col reala-form-col-sort-order">
+      Sort By
+    <select  class="sort-order" ng-model="plc.currentSortOrder" ng-change="$event.stopPropagation();plc.SortOrderChanged()">
+        <option ng-repeat="sortOrder in plc.sortOrderOptions" ng-hide="plc.propertyListName=='All Properties'&&sortOrder.id=='ranking'" value="{{sortOrder.id}}">{{sortOrder.name}}</option>
+    </select>
+  </div>
+  <div ng-if="plc.currentList!='All Properties'" class="reala-form-col">
+    <action-dropdown class="action-dropdown">
+        <ul class="dropdown">
+            <li class="user-dropdown fancy-dropdown" ng-class="{open:isUserDropdownVisible}">
+                <button class="btn btn-default" ng-click="toggleUserDropdown()">Action <i class="fa fa-caret-down"></i></button>
+                <ul class="list-group menu"  style="position:relative">
+                    <li class="list-group-item" ng-click="plc.SelectAll()">Select All</li>
+                    <li class="list-group-item" ng-click="plc.SelectNone()">Select None</li>
+                    <li class="list-group-item" ng-click="plc.RequestInfo()">Request Info</li>
+                    <li class="list-group-item" ng-click="plc.AddToList()" ng-show="plc.propertyListCount>1">Add To List</li>
+                    <li class="list-group-item" ng-click="plc.AddToTour()">Add to Tour</li>
+                    <li class="list-group-item" ng-hide="plc.propertyListName=='All Properties'" ng-click="plc.RemoveProperties()">Remove</li>
+                </ul>
+            </li>
+        </ul>
+    </action-dropdown>
+  </div>
+    <div class="reala-form-col reala-form-col-filter-listing" ng-if="!isNarrow">
+      <section class="filter-wrapper">
+          <button class="all-detail" ng-show="{{plc.currentView!='map'}}" ng-click="plc.showExtended=!plc.showExtended">Details</button>
+          <div class="filter-col view">
+                <a ui-sref=".maplist" ng-model="plc.currentView" uib-btn-radio="'maplist'">
+                    <img src="images/icon-both.svg" class="normal">
+                    <img src="images/icon-both-active.svg" class="active">
+                </a>
+                <a ui-sref=".list" ng-model="plc.currentView" uib-btn-radio="'list'">
+                    <img src="images/icon-list.svg" class="normal">
+                    <img src="images/icon-list-active.svg" class="active">
+                </a>
+                <a ui-sref=".thumbs" ng-model="plc.currentView" uib-btn-radio="'thumbs'">
+                    <img src="images/icon-thumb.svg" class="normal">
+                    <img src="images/icon-thumb-active.svg" class="active">
+                </a>
+          </div>
+      </section>
+    </div>
+    <div class="reala-form-col reala-form-col-filter-listing" ng-if="isNarrow">
+
+            <section class="filter-wrapper">
+                <div class="filter-col view">
+                    <a ui-sref=".list" ng-if="showList" ng-click="plc.switchListThumb()" ng-model="plc.currentView" uib-btn-radio="'list'">
+                          <img src="images/icon-list.svg" class="normal">
+                          <img src="images/icon-list-active.svg" class="active">
+                      </a>
+                    <a ui-sref=".thumbs" ng-if="!showList" ng-click="plc.switchListThumb()" ng-model="plc.currentView" uib-btn-radio="'thumbs'">
+                        <img src="images/icon-thumb.svg" class="normal">
+                        <img src="images/icon-thumb-active.svg" class="active">
+                    </a>
+                </div>
+            </section>
+        </div>
+  </div>
+</div>
+<div style="
+    
+    position: relative;
+    
+    
+    
+    height: 20px;
+    width: 100%;
+    background: linear-gradient(180deg, #d3d3d3, transparent , transparent);
+"/>
+  

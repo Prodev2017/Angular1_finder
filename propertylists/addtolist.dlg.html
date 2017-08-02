@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3>{{data.title}}</h3>
+</div>
+<div class="modal-body">
+    <div class="row formitem">
+        <label>List</label>
+        <select ng-model="data.targetListName" class="form-control" >
+            <option value="" disabled selected>Select List</option>
+            <option ng-repeat="option in data.targetLists" value="{{option.name}}">{{option.name}}</option>
+        </select>
+    </div>
+   <div class="row formitem">
+       <label>Keep In List</label><input type=checkbox checked class="form-control" ng-model="data.keepInThisList">
+   </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

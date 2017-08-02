@@ -1,0 +1,146 @@
+.content{
+    margin: 0 auto;
+    padding-top: 0;
+    position: relative;
+    width: 100%;
+}
+#shi-main{
+    width: 100%;
+    margin: 0 auto;
+}
+
+#shi_wrapper {
+    position:absolute; z-index:1;
+    width:100%;
+    height:425px;
+    overflow:auto;
+}
+
+#scroller {
+    width:10100px;
+    height:100%;
+    float:left;
+    padding:0;
+}
+#scroller li {
+    display:block;
+    float:left;
+    width:10000px;
+    height:100%;
+}
+#scroller li img{
+    margin-top:35px;
+}           
+#pullRight, #pullLeft {
+    display:block;
+    width:50px;
+    float:left;
+    height:100%;
+}
+#sodoLoban {
+    position:absolute;
+    z-index:2;
+    top:35px;
+    text-align:center;
+    width:100px;
+    font-size:12px;
+    font-weight:bold;
+    /*border:1px solid red;*/
+}
+#thelist{margin:0; padding:0;}
+#thuocloban{
+    line-height: 23px;
+}
+.loban-h {
+    border:0px;
+    width:270px;
+    float:left;
+    /*margin-top:12px;*/
+    border-top:1px solid gray;
+}
+.khoan-h {
+    border:0px;
+    width:277px;
+    height:120px;
+    float:left;
+}
+.cung-h {
+    border:0px;
+    margin:0;
+    float:left;
+    width:126px;
+}
+
+.loban-d {
+    border:0px;
+    border-top:1px solid gray;
+    float:left;
+}
+.khoan {
+    border:0px;
+}
+.tenkhoan {
+    border:0px;
+    border-left:1px solid gray;
+    border-bottom:1px solid gray;
+    width:150px;
+    height: 119px;
+    float:left;
+    font-size:13px;
+    text-transform: uppercase;
+    line-height:119px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.cung {
+    border:0px;
+    border-right:1px solid gray;
+    margin:0;
+    float:left;
+    height:120px;
+    width:688px;
+}
+.tencung {
+    border:0px;
+    border-left:1px solid gray;
+    border-bottom:1px solid gray;
+    margin:0;
+    width:124px;
+    height:23px;
+    float:left;
+    font-size:13px;
+    padding-left:10px;
+    font-weight:bold;
+}
+.sodo {
+    border:0px;
+    margin:0;
+    float:left;
+    height: 24px;
+}
+.tot {
+    background:#fff;
+    color:#ED1C24;
+}
+.trungtinh {
+    background:#eee;
+}
+.xau {
+    background:#f3f3f3;
+}
+.sodo1, .sodo2, .sodo3, .sodo4, .sodo5, .sodo6, .sodo7, .sodo8 {
+    border:0px;
+    border-left:1px solid gray;
+    border-bottom:1px solid gray;
+    margin:0;
+    width:85px;
+    height:23px;
+    float:left;
+    text-align:center;
+    font-size:13px;
+}
+#lobanOuter p{
+    margin:0px;
+height: auto; 
+}

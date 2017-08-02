@@ -1,0 +1,39 @@
+<div class="uploaded-files-container">
+  <div class="toggle-menu" ng-click="toggleFileList()">
+    View all shared files
+    &nbsp;
+    <i class="fa fa-caret-down" ng-if="!isShowingSharedFiles"></i>
+    <i class="fa fa-caret-up" ng-if="isShowingSharedFiles"></i>
+  </div>
+  <div class="file-list-container" ng-show="isShowingSharedFiles">
+    <i class="navigation-button fa fa-angle-left" ng-click="moveLeft()"></i>
+    <div class="file-list-wrapper">
+      <div class="file-list" ng-style="{
+        'transform': 'translateX(' + fileListOffsetX + 'px)'
+      }">
+        <div
+          class="file-item"
+          ng-repeat="file in files"
+          ng-click="openFile($index)">
+          <div class="file-type-image">
+            <img ng-src="{{ getFileTypeImage(file) }}" />
+          </div>
+          <div class="file-description">
+            <div class="small-file-type-image">
+              <img ng-src="{{ getSmallFileTypeImage(file) }}" />
+            </div>
+            <div class="file-info">
+              <div class="file-name">
+                {{ file.name }}
+              </div>
+              <div class="share-time">
+                {{ formatTime(file) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <i class="navigation-button fa fa-angle-right" ng-click="moveRight()"></i>
+  </div>
+</div>

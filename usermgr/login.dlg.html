@@ -1,0 +1,52 @@
+<div class="wrapper-signup" >
+	<div id="demo1" >
+		<img alt="background" class="modal-bg" src="../images/bg-signup.jpg"/>
+		<div id="particle-target" login-hover-image-effect></div>
+	</div>
+    <div class="wrapper-content">
+        <h1 class="logo">
+          <a href="#" title="Harcourts" class="logo-link">
+            <img src="images/hartcourts/logo.svg" alt="background" width="255px" class="img-logo">
+          </a>
+        </h1>
+        <h2 class="form-title">SIGN INTO YOUR ACCOUNT</h2>
+        <a class="btn-close-sign" ng-click="cancel()"><img src="images/btn-close.jpg" class="img-responsive"></a>
+        <form method="" class="signup-form form-login">
+          <div class="row">
+            <div class="col-sm-6 form-type">
+              <div class="form-item">
+                <label for="email" class="hidden">Email</label>
+                <div class="wrapp-input">
+                  <span class="icon icon-user"></span>
+                  <input type="text" class="form-control" name="email" ng-model="data.email"  placeholder="Enter your Email"/>
+                </div>
+                <span class="help-text">Text error!</span>
+              </div>
+              <div class="form-item">
+                <label for="password" class="hidden">Password</label>
+                <div class="wrapp-input">
+                  <span class="icon icon-password"></span>
+                  <input type="password" class="form-control" name="password" ng-model="data.password"  placeholder="Enter your Password"/>
+                </div>
+                <span class="help-text">Text success!</span>
+              </div>
+              <div class="sign-forgot login">
+                <button type="submit" class="btn btn-default" ng-click="ok()">SIGN IN</button>
+                <a title="Forgot your password?" class="btn btn-link" ng-click="forgot()">Forgot your password?</a>
+              </div>
+            </div>
+            <div class="col-sm-6 form-social">
+              <span class="line-or"><span>or</span></span>
+              <div class="form-item">
+                <a href="" class="btn-social"><img src="images/btn-login-fb.png" class="img-responsive"></a>
+              </div>
+              <div class="form-item">
+                <a href="" class="btn-social"><img src="images/btn-login-gg.png" class="img-responsive"></a>
+              </div>
+            </div>
+          </div>
+        </form>
+         <div class="licence">Don’t have an account yet? <a ng-click="register()">Register</a></div>
+    </div>
+	
+</div>

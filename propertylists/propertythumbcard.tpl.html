@@ -1,0 +1,62 @@
+<div>
+    <div class="property-photo" ng-click="pllc.ShowDetails(property)" hover-image-effect="property-bg">
+        <div class="property-img-container">
+			<img draggable=false ng-src="{{property.firstphotourl}}" class="property-bg">
+		</div>
+        <section class="photo-top">
+            <div class="recheckbox" ng-click="$event.stopPropagation()">
+                <label>
+                    <input type="checkbox" value="" id="{{'rea_propertylist_item_'+property.id}}">
+                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                </label>
+            </div>
+            <div class="buttons" ng-click="$event.stopPropagation()">
+                <div class="btn-group" uib-dropdown  is-open="status.isopen">
+                    <i class="fa fa-ellipsis-v" uib-dropdown-toggle></i>
+                    <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu  role="menu" aria-labelledby="single-button">
+                        <li role="menuitem" ng-click="pllc.SendToAgent(property)">Request Info</li>
+                        <li role="menuitem" ng-click="pllc.AddToList(property)" ng-show="plc.propertyListCount>1">Add To List</li>
+                        <li role="menuitem" ng-click="pllc.AddToTour(property)">Add to Tour</li>
+                        <li role="menuitem" ng-click="pllc.RemoveProperties(property)">Remove</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="photo-bottom">
+            
+            <article>
+				<div class="list-price">${{property.listprice}}</div>
+                <div class="address">{{property.streetaddress}}</div>
+                <div class="cs">
+                   <span>{{property.city}}, {{property.stateprovince}}</span>
+                </div>
+            </article>
+        </section>
+    </div>
+    <div class="extended" ng-show="plc.showExtended" ng-class="plc.showExtended == true ? 'active' : ''">
+        <article>
+            <div class="type"><span>{{property.propertytype}}</span>For {{property.transactiontype}}</span></div>
+        </article>
+        <article class="bb">
+            <span>{{property.beds}}<label>bd</label></span>
+            <span>{{property.baths}}<label>ba</label></span>
+            <span>{{property.sqft}}<label>sqft</label></span>
+        </article>
+        <div class="properties row">
+            <div class="col-sm-6"><label>PPS</label><div class="value">${{property.ppsqft}}</div></div>
+            <div class="col-sm-6"><label>Lot</label><div class="value">{{property.lotsize | number:0}}</div></div>
+        </div>
+        <div class="properties row">
+            <div class="col-sm-6"><label>Days:</label><div class="value">{{property.dom}}</div></div>
+            <div class="col-sm-6"><label>Year</label><div class="value">{{property.yearbuilt}}</div></div>
+        </div>
+        <hr>
+        <div class="remarks" ng-show="property.clientcomments.length>0 && !property.addingComment"><div class="title" ng-click="property.addingComment=true" style="color:blue;cursor:pointer">My Comments</div>{{property.clientcomments}}</div>
+        <div class="add-remarks" ng-show="property.clientcomments.length==0 && !property.addingComment"><div class="title" style="" ng-click="property.addingComment=true">Add Comment</div></div>
+        <div class="adding-remarks" ng-show="property.addingComment"><div class="title">My Comments</div><textarea ng-model="property.clientcomments"></textarea><button class="btn btn-primary btn-xs" ng-click="property.addingComment=false">Save</button></div>
+        <div class="remarks" ng-show="property.agentcomments.length>0"><div class="title">Agent Comments</div>{{property.agentcomments}}</div>
+        <div class="remarks"><div class="title">Remarks</div>{{property.remarks}} ...</div>
+    </div>
+</div>
+
+

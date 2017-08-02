@@ -1,0 +1,35 @@
+<div class="search-result-title">
+    <div class="reala-search-result-title">
+        <div class="left-section">
+            <div class="search-location-name">
+                {{ slc.currentAreaLabel }}
+            </div>
+            <div class="search-number">
+                Showing {{ slc.pageSize }} of {{ slc.totalListings }} Homes
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="sorting">
+                <img alt="sorting">
+                <div class="sorting-label">Sort:</div>
+                <select class="sorting-dropdown" ng-model="slc.currentSortOrder" ng-change="$event.stopPropagation();slc.SortOrderChanged()">
+                    <option ng-repeat="sortOrder in slc.sortOrderOptions" value="{{ sortOrder.id }}">
+                        {{ sortOrder.name }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="save-to">
+                <div class="save-to-label">
+                    Save to:
+                </div>
+                <select class="save-locations"  ng-model="slc.currentSaveLocation" ng-change="slc.SaveLocationChanged()">
+                    <option ng-repeat="list in slc.lists" value="{{ list }}" ng-selected="list == slc.currentSaveLocation">{{ list }}</option>
+                    <option style="font-style:italic;font-weight:bo" value="-1" >Create New List...</option>
+                </select>
+                <button ui-sref="propertylist({name:slc.currentSaveLocation})" class="btn btn-arrow-blue">View →</button>
+            </div>
+        </div>
+    </div>
+</div>

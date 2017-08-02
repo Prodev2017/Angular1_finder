@@ -1,0 +1,12 @@
+<div class="modal-photo-wrap">
+    <button class="btn btn-primaty first"><span class="save-listing"></span>Save</button>
+    <button class="btn btn-primaty first" ng-click="cancel()">Close</button>
+    <div uib-carousel active="active">
+        <div uib-slide ng-repeat="photo in photos track by photo.id" index="photo.id">
+            <img ng-src="{{photo.image}}" class="modal-photo">
+            <div class="carousel-caption">
+                <h4>Photo {{photo.id+1 | number}} of {{photos.length}}</h4>
+            </div>
+        </div>
+    </div>
+</div>

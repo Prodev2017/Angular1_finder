@@ -1,0 +1,19 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Move To Another List</h3>
+            </div>
+            <div class="modal-body">
+                <label>Destination List</label>
+                <select class="form-control" ng-model="targetListId" ng-options="item as item.name for item in targetLists track by item.id">
+                    <option value="">Select...</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="$hide();MoveList(propertyIds,targetListId)">OK</button>
+                <button class="btn btn-warning" ng-click="$hide()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

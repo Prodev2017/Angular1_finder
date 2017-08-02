@@ -1,0 +1,19 @@
+<div class="criteria">
+    <div class="left-col">
+        <section>
+            <div class="criteria-item">
+                <div class="dual-field">
+                    <select name="min-listprice" ng-model="sbc.controlValues.minlistprice" class="search-criteria search-select" ng-change="sbc.searchPrice()">
+                        <option ng-repeat="option in sbc.controls.minlistprice"  value="{{option.value}}">{{option.name}}</option>
+                    </select>
+                    &nbsp;-&nbsp;
+                    <select name="max-listprice" ng-model="sbc.controlValues.maxlistprice" class="search-criteria search-select" ng-change="sbc.searchPrice()">
+                        <option ng-repeat="option in sbc.controls.maxlistprice"  value="{{option.value}}">{{option.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="right-col">
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<section class="attachments" sticky>
+    <div class="dvc-files-message">
+        <div class="dvc-files-message-inner">
+            <h3><button class="toggle-trigger-slider" ng-click="ac.slideToggle()" data-id-content="attachments-toggle-button">VIEW ALL SHARED FILES <i class="fa fa-caret-right" aria-hidden="true"></i></button></h3>
+            <div class="use-carousel-10 carousel-style-10 slider-toggle-content" id="attachments-pane">
+                <article ng-repeat="search in nmc.msg.data.propertySearches">
+                    <div class="property-search">
+                        <div class="carousel-item">
+                            <a class="carousel-item-inner" href="#">
+                                <div class="img-file">
+                                    <img src="images/file-pdf.png">
+                                </div>
+                                <h4 class="file-icon file-pdf">{{search.name}}</h4>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <article ng-repeat="search in nmc.msg.data.propertySearches">
+                    <div class="property-search">
+                        <div class="carousel-item">
+                            <a class="carousel-item-inner" href="#">
+                                <div class="img-file">
+                                    <img src="images/file-pdf.png">
+                                </div>
+                                <h4 class="file-icon file-pdf">{{search.name}}</h4>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            
+                <article ng-repeat="list in nmc.msg.data.propertyLists">
+                    <div class="carousel-item">
+                        <a class="carousel-item-inner" href="#">
+                            <div class="img-file">
+                                <img src="images/file-doc.png">
+                            </div>
+                            <h4 class="file-icon file-doc">{{list.name}}</h4>
+                        </a>
+                    </div>
+                </article>
+                
+                <article ng-repeat="file in nmc.msg.data.files">
+                    <div class="property-search">
+                        <div class="carousel-item">
+                            <a class="carousel-item-inner" href="#">
+                                <div class="img-file">
+                                    <img src="images/file-pdf.png">
+                                </div>
+                                <h4 class="file-icon file-pdf">{{file.name}}</h4>
+                            </a>
+                        </div>
+                    </div>
+                </article>            
+                
+            
+                <div class="carousel-item">
+                    <a class="carousel-item-inner" href="#">
+                        <div class="img-file">
+                            <img src="images/file-png.png">
+                        </div>
+                        <h4 class="file-icon file-png">homeagreement.png</h4>
+                    </a>
+                </div>
+                
+                <article ng-repeat="photo in nmc.msg.data.propertyPhotos">
+                    <div class="carousel-item">
+                        <a class="carousel-item-inner" href="#">
+                            <div class="img-file">
+                                <img src="images/file-png.png">
+                            </div>
+                            <photocard data-propertyref="{{photo.propertyRef}}" ng-click="nm.msg.DisplayDetails()"></photocard>
+                        </a>
+                    </div>
+                </article>
+                
+                <article ng-repeat="image in nmc.msg.data.images">
+                    <div class="carousel-item">
+                        <a class="carousel-item-inner" href="#">
+                            <div class="img-file">
+                                <img src="images/file-png.png">
+                            </div>
+                            <img src="{{image}}" style="max-width:200px;max-height:200px">
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </div><!-- .dvc-body-message -->
+    
+</section>

@@ -1,0 +1,47 @@
+<article class="row" id="msg_{{msg.data.messageId}}">
+    <hr>
+    <section class="header">
+        <img class="sender-icon" ng-src="{{msg.data.senderIcon}}">
+        <span class="sender-name">{{msg.data.senderName}}</span>
+        <span class="time-stamp">{{msg.data.timeStamp}}</span>
+        <button class="fa fa-paperclip" title="Add Attachment" data-placement="right" data-template-url="testaddattachment.tpl.html"  data-animation="true" bs-popover></button>
+    </section>
+    <section class="body">
+        <div>{{msg.data.body}}</div>
+    </section>
+    <section class="replies col-xs-offset-1" ng-class="msg.Hilite() ? 'hilite':''">
+        <article class="reply" ng-repeat="reply in msg.data.replies">
+            <span class="sender-name">{{reply.senderName}}</span>
+            <span class="time-stamp">{{reply.timeStamp | date:'h:mm a EEE MMMM dd'}}</span>
+            <div class="body" ng-bind-html="reply.body"></div>
+        </article>
+        <article class="reply new">
+            <textarea rows="2" placeholder="Reply Here...." ng-model="msg.replyText" ng-keyup="msg.ReplyTextChanged()"></textarea>
+            <button class="btn btn-primary btn-sm" ng-show="msg.showReplyControls" ng-click="msg.AddReply()">Send</button>
+        </article>
+    </section>
+    <section class="attachments col-xs-4 col-xs-offset-1" ng-show="msg.HasAttachments()">
+        <article ng-repeat="search in msg.data.propertysearches">
+            <div class="property-search">
+                <span class="fa fa-search"></span> {{search.name}} <button class="btn btn-primary btn-sm">Run Search</button>
+            </div>
+        </article>
+        <article ng-repeat="list in msg.data.propertylists">
+            <div class="property-search">
+                <span class="fa fa-list"></span> {{list.name}} <button class="btn btn-primary btn-sm">View Properties</button>
+            </div>
+        </article>
+        <article ng-repeat="file in msg.data.files">
+            <div class="property-search">
+                <span class="fa fa-file-o"></span> {{file.name}} <button class="btn btn-primary btn-sm" ng-click="msg.GetFile(file)">Get File</button>
+            </div>
+        </article>
+        <article ng-repeat="photo in msg.data.propertyphotos">
+            <photocard data-propertyref="photo.propertyRef" ng-click="msg.DisplayDetails(photo)"></photocard>
+        </article>
+        <article ng-repeat="image in msg.data.images">
+            <img src="{{image}}" style="max-width:200px;max-height:200px">
+        </article>
+        <br>
+    </section>
+</article>

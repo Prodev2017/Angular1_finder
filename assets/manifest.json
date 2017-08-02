@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "app.css": {
+      "files": [
+        "styles/app.scss"
+      ]
+    }
+  },
+  "config": {
+    "devUrl": "http://localhost",
+    "directory": "components"
+  }
+}

@@ -1,0 +1,148 @@
+<div>
+    <div class="property-header">
+        <div class="letter-wrapper">{{$index + 1}}</div>
+        <div class="card-title">
+            <span class="address">{{property.streetaddress}} ,{{property.city}}</span>
+            <span class="distance" ng-show="property.distance >= 0">{{property.distance / 1000}} km</span>
+        </div>
+        <button class="btn btn-primary" ng-click="ptc.GetDirections($index)">Get Directions</button>
+    </div>
+    <div class="property-container">
+        <div class="property-map" ng-click="ptc.GetDirections($index)">
+            <img class="map" src="{{ptc.MapUrl(property)}}">
+        </div>
+        <div class="property-photo" ng-click="ptc.ShowDetails(property)" hover-image-effect="property-bg">
+            <div class="property-inner">
+				<div style="background: -webkit-linear-gradient(#000, transparent);
+                    background: -o-linear-gradient(#000, transparent);
+                    background: -moz-linear-gradient(#000, transparent);
+                    background: linear-gradient(#000, transparent); 
+                    position: absolute; 
+                    width: 100%; 
+                    height: 100px; 
+                    top: -20px;">
+            
+				</div>
+                <div class="property-img-container">
+					<img draggable=false ng-src="{{property.firstphotourl}}" class="property-bg">
+				</div>
+                <section class="photo-top">
+                    <div ng-if="ptc.currentList!='All Properties'" class="recheckbox">
+						<label>
+							<input type="checkbox" value="" id="{{'rea_propertylist_item_'+property.id}}">
+							<span class="cr"><i class="cr-icon fa fa-check"></i></span>
+						</label>
+					</div>
+					<div class="sc" ng-repeat="cond in property.specialconditions track by $index"><span>{{cond}}</span></div>
+					<div class="list-buttons" ng-click="$event.stopPropagation()">
+						<i data-toggle="tooltip" title="View Photos" ng-show="false" ng-click="$event.stopPropagation();spc.ViewPhotos(property);" class="ng-hide">
+							<img src="images/icon-viewphoto.png">
+						</i>
+						<i data-toggle="tooltip" title="Request Info" ng-click="$event.stopPropagation();ptc.ViewPhotos(property);">
+							<div></div>
+							<img src="images/cardicons/photos.svg">
+						</i>                
+						
+						<i data-toggle="tooltip" title="Request Info" ng-click="$event.stopPropagation();ptc.RequestInfo(property);">
+							<div></div>
+							<img src="images/cardicons/info.svg">
+						</i>
+						<i data-toggle="tooltip" title="Delete" ng-click="$event.stopPropagation();ptc.RemoveProperty(property);">
+							<div></div>
+							<img src="images/tour-51.png">
+						</i>                
+					</div>
+                    <!-- <div class="buttons" ng-click="$event.stopPropagation()">
+                        <i class="icon fa fa-trash-o" data-toggle="tooltip" title="Remove" ng-click="ptc.RemoveProperty(property)"></i>
+                    </div> -->
+                </section>
+                <section class="photo-bottom">
+				<article>
+					<div class="info-card left">
+						<div class="list-price">${{property.listprice}}</div>   
+						<div class="address">{{property.streetaddress}}</div>
+						<div class="cs">
+							<span>{{property.city}}, {{property.stateprovince}} {{property.postalcode}}</span>
+						</div>
+					</div>
+					<div class="info-card right">
+						<div class="property-type ng-binding">                                                
+							{{property.propertytype}}
+							<div class="type-img-container">
+								<img class="{{property.propertytype.toLowerCase()}}">
+							</div>
+						</div>
+						<div class="bb-search">
+							<div class="bb-item">{{property.beds}} <span>Beds</span></div>
+							<div class="bb-item">{{property.baths}} <span>Baths</span></div>
+							<div class="bb-item">{{property.sqft | nanumber}} <span>Sq. Ft.</span></div>
+						</div>
+					</div>
+					
+					<!--
+					<div class="line">
+						<div class="list-price">{{property.listprice | currency:'$':0}}</div>                    
+						<div class="property-type">                                                
+							{{property.propertytype}}
+							<img class="{{property.propertytype.toLowerCase()}}">
+						</div>
+						<!-- <div class="property-type-text">{{property.propertytype}}</div> -->
+						<!--
+					</div>
+					<div class="address">{{property.address}}</div>
+					<div class="line">
+						<div class="cs">
+							<span>{{property.city}}, {{property.state}} {{property.postalcode}}</span>
+						</div>
+						<div class="bb-search">
+							{{property.beds}} BD | {{property.baths}} BA | {{property.sqft}} SF
+						</div>
+
+					</div>
+					-->
+
+				</article>
+			</section>
+			<section class="info-more" ng-click="$event.stopPropagation();" ng-init="showdetails=ptc.showExtended">
+				<div class="info-more-col">Lot Size: <span>{{property.lotsize}}</span></div>
+				<div class="info-more-col">Days : <span>{{property.dom}}</span></div>
+				<div class="info-more-col">Fees : <span>${{property.ppsqft | nacurrency}}</span></div>
+				<div class="info-more-col">Year	: <span>{{property.yearbuilt}}</span></div>
+				<div class="info-more-col">MLS® #: <span>{{property.listingid}}</span></div>
+				<div class="info-more-col" 	>
+					<button class="btn btn-link"  ng-click="$event.stopPropagation();showdetails=!showdetails;">details <!-- <i class="fa fa-angle-down" aria-hidden="true"></i>< --></button>
+				</div>
+			</section>
+            </div>
+        </div>
+        <div class="extended active" ng-show="ptc.showExtended||showdetails">
+            <!-- <div class="properties row">
+                <div class="col-sm-6"><label>Price/SqFt</label><div class="value">${{property.ppsqft}}</div></div>
+                <div class="col-sm-6"><label>Lot Size</label><div class="value">{{property.lotsize| number:0}}</div></div>
+            </div>
+            <div class="properties row">
+                <div class="col-sm-6"><label>Days On Market</label><div class="value">{{property.dom}}</div></div>
+                <div class="col-sm-6"><label>Year Built</label><div class="value">{{property.yearbuilt}}</div></div>
+            </div> -->
+            
+            <div class="remarks" ng-show="property.clientcomments.length > 0 && !property.addingComment"><div class="title" ng-click="property.addingComment = true" style="color:blue;cursor:pointer">My Comments</div>{{property.clientComments}}</div>
+            <div class="add-remarks" ng-show="property.clientcomments.length == 0 && !property.addingComment"><div class="title" ng-click="property.addingComment = true">Add Comment</div></div>
+            <div class="adding-remarks" ng-show="property.addingComment"><input type="text" placeholder="Comment goes here, add your remarks about this property" ng-model="property.clientComments"/><button class="btn btn-primary btn-xs" ng-click="property.addingComment = false"><img src="../images/test-136.png"/>Add</button></div>
+            <div class="remarks" ng-show="property.agentcomments.length > 0"><div class="title">Agent Comments</div>{{property.agentComments}}</div>
+            <div class="remarks"><div class="title">Remarks</div>{{property.remarks}} ...</div>
+
+        </div>
+		<div  ng-show="ptc.showExtended||showdetails" style="background: -webkit-linear-gradient(transparent, #1b222b 90%);
+                    background: -o-linear-gradient(transparent, #1b222b 90%);
+                    background: -moz-linear-gradient(transparent, #1b222b 90%);
+                    background: linear-gradient(transparent, #1b222b 90%);
+                    position: sticky; 
+                    width: 98%; 
+                    height: 100px; 
+                    margin-top:-14%;">
+            
+				</div>
+    </div>
+</div>
+
+

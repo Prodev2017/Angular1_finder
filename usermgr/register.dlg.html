@@ -1,0 +1,118 @@
+<div class="wrapper-signup">
+
+  <div id="demo1" >
+		<img alt="background" class="modal-bg" src="../images/bg-signup.jpg"/>
+		<div id="particle-target" login-hover-image-effect></div>
+  </div>
+
+    <div class="wrapper-content">
+
+      <h1 class="logo">
+          <a href="#" title="Harcourts" class="logo-link">
+            <img src="images/hartcourts/logo.svg" alt="background" width="255px" class="img-logo">
+          </a>
+      </h1>
+
+      <h2 class="form-title">REGISTER FOR YOUR FREE ACCOUNT</h2>
+
+      <a class="btn-close-sign" ng-click="cancel()"><img src="images/btn-close.jpg" class="img-responsive"></a>
+
+      <form method="" class="signup-form" name="registerForm" novalidate>
+          <div class="row">
+            <div class="col-sm-6 form-type">
+              <div class="form-item">
+                <div class="invalid" ng-show="data.errors.firstname">{{data.errors.firstname}}</div>
+                <div class="wrapp-input">
+                  <span class="icon icon-user"></span>
+                  <input type="text" class="form-control" name="name" ng-model="data.firstname"  placeholder="First Name" ng-required="true"/>
+                </div>
+              </div>
+              <div class="form-item">
+                <div class="invalid" ng-show="data.errors.lastname">{{data.errors.lastname}}</div>
+                <div class="wrapp-input">
+                  <span class="icon icon-user"></span>
+                  <input type="text" class="form-control" name="name" ng-model="data.lastname"  placeholder="Last Name" ng-required="true"/>
+                </div>
+              </div>
+              <div class="form-item">
+                <div class="invalid" ng-show="data.errors.email">{{data.errors.email}}</div>
+                <div class="wrapp-input">
+                  <span class="icon icon-email"></span>
+                  <input type="email" class="form-control" name="email" ng-model="data.email"  placeholder="Email" ng-pattern="/[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/" required/>
+                </div>
+              </div>
+              <div class="form-item">
+                <div class="invalid" ng-show="data.errors.mobilephone">{{data.errors.mobilephone}}</div>
+                <div class="wrapp-input">
+                  <span class="icon icon-phone"></span>
+                    <input type="number" class="form-control" name="mobilephone" ng-model="data.mobilephone"  placeholder="Phone Number" ng-required="true"/>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-12 col-xlg-6">
+                       <div class="form-item">
+                         <div class="invalid" ng-show="data.errors.phone">{{data.errors.phone}}</div>
+                         <div class="wrapp-input">
+                          <span class="icon icon-password"></span>
+                          <input type="password" class="form-control" name="password" ng-minlength="8" ng-model="data.password"  placeholder="Password" ng-required="true"/>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-12 col-xlg-6">
+                       <div class="form-item">
+                        <div class="wrapp-input">
+                          <span class="icon icon-password"></span>
+                          <input type="password" class="form-control" name="confirmpassword" ng-model="data.confirmpassword" placeholder="Confirm Password" ng-required="true"/>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-sm-6 form-policy">
+              <div class="register-purpose">
+                <h4>I am in the Market for:</h4>
+                <div class="col-md-6">
+                  <span><input type="checkbox" name="market" ng-model="data.market.buy"> <label>Buy</label></span></br>
+                  <span><input type="checkbox" name="market" ng-model=data.market.sell> <label>Sell</label></span></br>
+                  <span><input type="checkbox" name="market" ng-model=data.market.relocate> <label>Relocate</label></span></br>
+                </div>
+                <div class="col-md-6">
+                  <span><input type="checkbox" name="market" ng-model=data.market.investment> <label>Investment</label></span></br>
+                  <span><input type="checkbox" name="market" ng-model=data.market.evaluate> <label>Evaluate Home</label></span></br>
+                  <span><input type="checkbox" name="market" ng-model=data.market.other> <label>Other</label></span></br>
+                </div>
+              </div>
+              <div class="agent-detail">
+                <h4>Are you currently working with an agent?</h4>
+                <select ng-model="data.working">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="policy-container">
+                <h4>By signing up, I agree to the following</h4>
+                <div class="invalid" ng-show="data.errors.agreement">{{data.errors.agreement}}</div>
+                <div class="col-md-12">
+                  <span><input type="checkbox" name="email_listing"  ng-model="data.listingagreement"> <label>
+                    I agree to receive emails about listings that match my criteria. This is part of the tools provided by our system. You can unsubscribe any time.
+                  </label></span></br>
+                </div>
+                <div class="col-md-12">
+                  <span><input type="checkbox" name="email_news"  ng-model="data.newsagreement"> <label>
+                    I agree to receive emails containing real estate news, updates, information, and promotions. You can unsubscribe any time. Please refer to our <a ng-click="privacy()" > Privacy Policy</a> or contact us for more details.
+                  </label></span></br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row form-foot">
+            <div class="sign-forgot">
+              <button class="btn btn-default" ng-click="register()">Register</button>
+            </div>
+            <div class="licence">Already Have an account? <a href="" ng-click="login()">Log in</a></div>
+          </div>
+        </form>
+      
+    </div>
+
+</div>

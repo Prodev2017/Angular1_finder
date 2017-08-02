@@ -1,0 +1,231 @@
+<section id="header" ng-hide="noBanner">
+  <header ng-show="showMiniBanner" class="ng-hide" id="dvc-header" class="dvc_main-header dvc_main-header-mini">
+    <div class="dvc-header-top">
+      <div class="container dvc-header-top-inner">
+        <div class="dvc-logo">
+          <a href="/"><img src="images/hartcourts/logo.svg" width="255px" ></a>
+
+          <button type="button" class="navbar-toggle collapsed hamburger hamburger--spring" data-toggle="collapse" data-target="#menu-top" aria-controls="navigation" aria-expanded="true/false">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+          </button>
+
+        </div>
+        <!-- .dvc-logo -->
+
+        <div class="dvc-menu dvc-menu-style">
+          <nav class="navbar" role="navigation">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menu-top">
+              <ul class="nav navbar-nav" ng-controller="bannerCtrl">
+                 <li class="menu-item home-menu">
+                  <a title="Home" href="/"><img src="images/home-header-icon.svg"> Home</a>
+                </li>
+                <li class="menu-item find-properties-menu ">
+                  <a title="Find Properties" ui-sref="search"><img src="images/home-search.svg"> Search</a>
+                </li>
+                <li class="menu-item messages-menu ">
+                  <a title="Messages" ui-sref="messages"><img src="images/home-message.svg"> Messages</a>
+                  <span class="note" ng-show="newMessageCount > 0">{{newMessageCount}}</span>
+                </li>
+                <li class="menu-item my-home-finder-menu ">
+                  <a title="MyHomeFinder" ui-sref="myhomefinder"><img src="images/archive.svg"> My HomeFinder</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </nav>
+        </div>
+        <!-- .dvc-menu -->
+
+        <div class="dvc-account dvc-menu-style">
+          <nav class="navbar" role="navigation">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav login" ng-controller="bannerCtrl">
+                <li class="menu-item">
+                  <a href="#"><img class="img-avatar" src="images/hartcourts/avatar.png"></a>
+                </li>
+                <li class="menu-item">
+                  <a href="#"><span class="dvc-icon-min"><i class="fa fa-phone" aria-hidden="true"></i></span></a>
+                </li>
+                <li class="menu-item">
+                  <a href="#"><span class="dvc-icon-min"><i class="fa fa-comments" aria-hidden="true"></i></span></a>
+                </li>
+                <li ng-if="!authenticated" class="menu-item">
+                  <a ng-click="register()">Sign Up</a>
+                </li>
+                <li ng-if="!authenticated" class="menu-item">
+                  <a ng-click="login()">Log In</a>
+
+                </li>
+                <li ng-if="authenticated" class="dropdown menu-item icon-big menu-account">
+                  <a class="dropdown-toggle" data-toggle="dropdown" uib-popover-template="'theme/logout.tpl.html'" popover-placement="bottom-right"  popover-trigger="'outsideClick'"><img src="images/user.svg" width="30px"> Hello, {{name}} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </nav>
+        </div>
+        <!-- .dvc-account -->
+      </div>
+      <!-- top header -->
+
+  </header>
+
+  <header ng-hide="showMiniBanner" id="dvc-header" class="dvc_main-header">
+    <div class="dvc-header-top">
+      <div class="container dvc-header-top-inner">
+        <div class="dvc-logo">
+          <a href="/"><img src="images/hartcourts/logo.svg" width="255px"></a>
+
+          <button type="button" class="navbar-toggle collapsed hamburger hamburger--spring" aria-label="Menu" ng-click="isMenuTop2Collapsed = !isMenuTop2Collapsed" ng-class="{'is-active': isMenuTop2Collapsed}" data-toggle="collapse" data-target="#menu-top-2" aria-controls="navigation" aria-expanded="true/false">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+          </button>
+
+        </div>
+        <!-- .dvc-logo -->
+
+        <div class="dvc-menu dvc-menu-style">
+          <nav class="navbar" role="navigation">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menu-top-2">
+              <ul class="nav navbar-nav" ng-controller="bannerCtrl">
+                <li class="menu-item home-menu">
+                  <a title="Home" href="/"><img src="images/home-header-icon.svg"> Home</a>
+                </li>
+                <li class="menu-item find-properties-menu ">
+                  <a title="Find Properties" ui-sref="search"><img src="images/home-search.svg"> Search</a>
+                </li>
+                <li class="menu-item messages-menu ">
+                  <a title="Messages" ui-sref="messages"><img src="images/home-message.svg"> Messages</a>
+                  <span class="note" ng-show="newMessageCount > 0">{{newMessageCount}}</span>
+                </li>
+                <li class="menu-item my-home-finder-menu ">
+                  <a title="MyHomeFinder" ui-sref="myhomefinder"><img src="images/archive.svg"> My HomeFinder</a>
+                </li>
+                <!--
+                <li class="menu-item login-menu hidden-menu ">
+                  <a title="Login / Sign up" ui-sref="mylists" href="/#/mylists"><img src="images/hartcourts/logout-icon.png"> Login / Register</a>
+                </li>
+                -->
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </nav>
+        </div>
+        <!-- .dvc-menu -->
+
+        <div class="dvc-account dvc-menu-style">
+          <nav class="navbar" role="navigation">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav" ng-controller="bannerCtrl">
+                <li ng-if="!authenticated" class="menu-item">
+                  <a ng-click="register()">Register</a>
+                </li>
+                <li ng-if="!authenticated" class="menu-item">
+                  <a ng-click="login()">Log In</a>
+                </li>
+                <li ng-if="authenticated" class="dropdown menu-item icon-big menu-account">
+                  <a class="dropdown-toggle" data-toggle="dropdown" uib-popover-template="'theme/logout.tpl.html'" popover-placement="bottom-right"  popover-trigger="'outsideClick'"><img src="images/user.svg" width="30px"> Hello, {{name}}! <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </nav>
+        </div>
+        <!-- .dvc-account -->
+      </div>
+      <!-- top header -->
+
+
+      <div class="dvc-header-middle">
+        <div class="container dvc-header-middle-inner">
+          <div class="dvc-header-avatar">
+            <a href="#!/home/agentroster" class="img-avatar">
+                <img src="images/hartcourts/avatar.png">
+            </a>
+          </div>
+          <!-- .dvc-header-avatar -->
+
+          <div class="dvc-header-contact">
+            <div class="dvc-icon-text">
+              <div class="dvc-text">
+                Call Now
+              </div>
+              <div class="dvc-icon">
+                <a href="#"><i class="fa fa-phone" aria-hidden="true"></i><span class="missing-number">3</span></a>
+              </div>
+            </div>
+            <!-- .dvc-icon-text -->
+
+            <div class="dvc-icon-text">
+              <div class="dvc-text">
+                Text
+              </div>
+              <div class="dvc-icon">
+                <a href="#"><i class="fa fa-comments" aria-hidden="true"></i><span class="missing-number">3</span></a>
+                <!-- <span class="missing-number">3</span> -->
+              </div>
+            </div>
+            <!-- .dvc-icon-text -->
+          </div>
+          <!-- .dvc-header-contact -->
+
+          <div class="dvc-socials">
+            <a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="dvc-sub-logo">
+            <img src="images/logo-m.png">
+          </div>
+          <!-- .dvc-logo -->
+
+          <div class="dvc-author">
+            <h3 class="dvc-author-name">David Chen  <img src="images/auth-icon.png"></h3>
+            <h4 class="dvc-author-position">Personal Real Estate Corporation</h4>
+          </div>
+          <!-- .dvc-author -->
+
+          <div class="dvc-slogan">
+            <h3 class="dvc-slogan-text">David Chen PREC<br>“with you all the way”</h3>
+          </div>
+          <!-- .dvc-slogan -->
+
+          <div class="dvc-contact-info">
+            <div class="dvc-icon-wrap">
+              <div class="dvc-icon-img">
+                <img src="images/phone-icon.svg">
+              </div>
+              <div class="dvc-icon-text">
+                778 - 778 - 7878
+              </div>
+            </div>
+            <!-- .dvc-icon-wrap -->
+
+            <div class="dvc-icon-wrap">
+              <div class="dvc-icon-img">
+                <img src="images/mail-icon.svg">
+              </div>
+              <div class="dvc-icon-text">
+                info@website.com
+              </div>
+            </div>
+            <!-- .dvc-icon-wrap -->
+          </div>
+          <!-- .dvc-contact-info -->
+        </div>
+        <!-- .container -->
+      </div>
+      <!-- .dvc-header-middle -->
+  </header>
+</section>

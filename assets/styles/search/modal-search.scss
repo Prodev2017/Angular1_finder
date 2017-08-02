@@ -1,0 +1,19 @@
+.modal-primary {
+  .modal-dialog {
+    .modal-content {
+      background-color: $gray-12;
+      border-radius: 5px;
+    }
+  }
+  .modal-header {
+    border-color: $gray-8;
+    .close {
+      font-size: 4.8rem;
+    }
+    .heading-modal {
+      color: $gray-2;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+}

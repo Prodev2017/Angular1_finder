@@ -1,0 +1,29 @@
+.pagination-block {
+  text-align: center;
+  display:grid;
+  .pagination-container{
+	z-index:20;
+  }
+  
+  .pagination {
+    li {
+      a {
+        color: $gray-18;
+        padding: 3px 10px;
+        margin-left: 3px;
+        margin-right: 3px;
+        border-radius: 3px;
+      }
+    }
+  }
+  .pagination > .active > a,
+  .pagination > .active > span,
+  .pagination > .active > a:hover,
+  .pagination > .active > span:hover,
+  .pagination > .active > a:focus,
+  .pagination > .active > span:focus {
+    color: $gray-19;
+    background-color: $gray-20;
+    border-color: $gray-20;
+  }
+}

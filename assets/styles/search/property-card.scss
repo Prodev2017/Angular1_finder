@@ -1,0 +1,476 @@
+.property-photo {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 0px;
+    border: 4px solid #f5f5f5;
+    &.hilite {
+        border: 4px solid #ed1c24;
+        -webkit-transition: border 1s ease-out;
+        -moz-transition: border 1s ease-out;
+        -o-transition: border 1s ease-out;
+        transition: border 1s ease-out;
+        -webkit-box-shadow: 0px 23px 66px -31px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 23px 66px -31px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 23px 66px -31px rgba(0, 0, 0, 0.75);
+    }
+    .property-text-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+    .property-inner {
+        &:after, &:before {
+            content: '';
+            position: absolute;
+        }
+        &:after {
+            left: 0;
+            right: 0;
+            bottom: 10px;
+            height: 150px;
+            @include gradient-vertical(transparent, #000, 10%, 100%);
+        }
+        &:before {
+            background: url(../images/icon-zoom.svg) no-repeat 50% 50% rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            top: 50%;
+            left: 50%;
+            z-index: 14;
+            width: 56px;
+            height: 48px;
+            transition: all .3s;
+            border-radius: 0px;
+            transform: translate(-50%, -50%);
+        }
+        &:hover {
+            border: 3px #ff9600;
+            &:before {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+		.property-img-container{
+			margin: -6%;
+			img{
+				width:100%;
+				
+			}
+		}
+        .list-buttons {
+            position: absolute;
+            right: 4px;
+            margin-top: 4px;
+            color: white;
+            font-size: 32px;
+            i {
+                display: inline-block;
+                width: 35px;
+                height: 35px;
+                line-height: 22px;
+                cursor: pointer;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 3px;
+                transition: opacity .2s linear;
+                img {
+                    width: 27px;
+                    height: 27px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                div {
+                    width: 100%;
+                    height: 100%;
+                    background: #242e39;
+                    overflow: hidden;
+                    border-radius: 4px;
+                    opacity: 0.85;
+                }
+                .click-save {
+                    &.open {
+                        span {
+                            opacity: 1;
+                            transform: translateX(-40px);
+                            visibility: visible;
+                        }
+                    }
+                    img {
+                        max-width: 21px;
+                    }
+                    span {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        padding: 3px 5px;
+                        background-color: black;
+                        font-size: 12px;
+                        z-index: 9;
+                        display: block;
+                        border-radius: 0px;
+                        font-style: normal;
+                        left: 0;
+                        opacity: 0;
+                        visibility: hidden;
+                        transform: translateX(0);
+                        transition: all .3s linear;
+                    }
+                }
+                &:hover {
+                    opacity: .8;
+                }
+            }
+        }
+        .photo-top,
+        .photo-bottom {
+            position: absolute;
+            left: 0;
+            z-index: 9;
+            width: 100%;
+        }
+        .photo-top {
+            top: 0%;
+            .sctop {
+                display: inline-block;
+                float: left;
+                background-color: #242e39;
+                padding: 2px 6px;
+                margin-top: 7px;
+                margin-left: 5px;
+                font-size: 10px;
+                color: white;
+            }
+            .sc {
+                display: inline-block;
+                float: left;
+                background-color: #f47742;
+                padding: 2px 6px;
+                margin-top: 7px;
+                margin-left: 5px;
+                font-size: 10px;
+                color: white;
+            }
+			.type{
+				margin: 0;
+				position: absolute;
+				left: 10px;
+				top: 15px;
+			}
+        }
+        .photo-bottom {
+            bottom: 23px;
+            color: white;
+            padding-left: 5px;
+            padding-right: 5px;
+            display: inline-block;
+            flex-direction: row;
+            flex: 1;
+            img {
+                height: 25px!important;
+            }
+            .info-card {
+                width: 50%;
+                display: table-cell;
+                vertical-align: bottom;
+				&.left {
+					text-align:left;
+					float:left;
+                    .list-price {
+                        top: -35px;
+                        font-size: 2.5rem;
+                        font-family: ProximaNova;
+                        color: white;
+                        display: inline-block;
+                        margin-bottom: -40px;
+                        span {
+                            position: relative;
+                            top: -3px;
+                            line-height: 1;
+                            margin-right: 3px;
+                            img {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                    .address {
+                        font-size: 1.4rem;
+                        background-color: transparent;
+                        padding: 0;
+                        margin-bottom: -5px;
+                        width: 102%;
+                    }
+                    .cs {
+                        display: inline-block;
+                        font-size: 1.2rem;
+                        font-family: ProximaNova;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						width: 100%;
+						white-space: nowrap;
+						span{
+							text-overflow: ellipsis;
+							overflow: hidden;
+							width: 100%;
+							white-space: nowrap;
+						}
+                    }
+                }
+                &.right {
+                    float:right;
+					text-align: right;
+                }
+                .property-type {
+                    float: right;
+                    display: flex;
+                    margin-top: 5px;
+                    
+                    .condo {
+                        content: url("images/condo-new.svg");
+                        width: 36px;
+                        background-color: #f33536;
+                        padding: 3px 5px 3px 5px;
+                        border-radius: 3px;
+                    }
+                    .multifamily {
+                        content: url("images/multi-family-new.svg");
+                        width: 36px;
+                        background-color: #f33536;
+                        padding: 3px 5px 3px 5px;
+                        border-radius: 3px;
+                    }
+                    .townhouse {
+                        content: url("images/town-house-new.svg");
+                        width: 36px;
+                        background-color: #f33536;
+                        padding: 3px 5px 3px 5px;
+                        border-radius: 3px;
+                    }
+                    .land {
+                        content: url("images/land-new.svg");
+                        width: 36px;
+                        background-color: #f33536;
+                        padding: 3px 5px 3px 5px;
+                        border-radius: 3px;
+                    }
+                    .other {
+                        content: url("images/other-new.svg");
+                        width: 36px;
+                        background-color: #f33536;
+                        padding: 3px 5px 3px 5px;
+                        border-radius: 3px;
+                    }
+                    .type-img-container{
+					    vertical-align: bottom;
+						position: relative;
+						top: -13px;
+						background: #f33536;
+						padding: 2px 4px;
+						margin-left:5px;
+						img {
+							width: 30px;
+							background-color: #ffffff;
+							display: inline-block;
+							mask-position: 50% 50%;
+							mask-size: 100% 100%;
+							mask-repeat: no-repeat;
+							&.house,&.home{
+                                -webkit-mask-image: url(images/property-types/house-2.svg);
+                                -o-mask-image: url(images/property-types/house-2.svg);
+                                -moz-mask-image: url(images/property-types/house-2.svg);
+                                mask-image: url(images/property-types/house-2.svg);
+								mask-image: url(images/property-types/house-2.svg);
+							}
+							&.condo{
+								mask-image: url(images/property-types/condo-2.svg);
+							}
+							&.multifamily{
+								mask-image: url(images/property-types/multi-family-2.svg);
+							}
+							&.townhouse{
+								mask-image: url(images/property-types/townhouse-2.svg);
+							}
+							&.land{
+								mask-image: url(images/property-types/land-2.svg);
+							}
+							&.other{
+								mask-image: url(images/property-types/other-2.svg);
+							}
+						}
+					}
+                    p {
+                        margin-bottom: 0px;
+                        margin-right: 0px;
+                    }
+                }
+                .bb-search {
+                    align-self: flex-end;
+                    text-align: right;
+                    color: white;
+                    font-size: 1.6rem;
+                    clear:both;
+                    .bb-item {
+                        display: inline-block;
+                        font-weight: bold;
+                        text-align: center;
+                        border-left: solid 1px rgba(255, 255, 255, 0.6);
+                        margin-left: 5px;
+                        padding-left: 7px;
+                        font-size: 16px;
+                        line-height: 1;
+                        &:first-child {
+                            margin-left: 0;
+                            padding-left: 0;
+                            border-left: 0;
+                        }
+                        span {
+                            display: block;
+                            font-weight: 100;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+        .info-more {
+            position: absolute;
+            bottom: 0%;
+            left: 0;
+            font-size: 1rem;
+            line-height: 12px;
+            padding: 0 5px;
+            background-color: #242e39;
+            color: #f33536;
+            font-size: 1.1rem;
+            padding-left: 5px;
+            padding-right: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+            width: 100%;
+            border-radius: 0 0 0 0;
+			min-height:20px;
+            span {
+                color: #ffffff;
+            }
+            .info-more-group {
+                display: flex;
+                flex-direction: row;
+            }
+            .info-more-col {
+                margin-right: 2px;
+                .btn-link {
+                    background: url(images/icon-plus.png) no-repeat 5px 50% $red-2;
+                    background-size: 14px;
+                    padding: 0 5px 0 23px;
+                    margin-right: -10px;
+                    width: auto;
+                }
+            }
+            .btn-link {
+                color: white;
+                padding: 0;
+                text-decoration: none;
+                background-color: #f33536;
+                margin-right: -10px;
+                padding-right: 5px;
+                i {
+                    color: #992020;
+                    padding-left: 4px;
+                    padding-right: 3px;
+                }
+            }
+        }
+    }
+    .extended {
+        //display: none;
+        height: 250px;
+        margin-top: 0px;
+        overflow-y: scroll;
+        padding: 1.5rem;
+        background-color: #242e39;
+        box-shadow: 0 1px 3px 0 rgba(37, 32, 31, .3);
+        .add-comment {
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+            text-align: left;
+        }
+        &.active {
+            display: block;
+        }
+        .properties {
+            font-size: 13px;
+            padding-left: 0px;
+            padding-right: 15px;
+            label {
+                display: inline-block;
+                float: left;
+            }
+            .value {
+                display: inline-block;
+                float: right;
+            }
+        }
+        .add-remarks,
+        .adding-remarks,
+        .remarks {
+            color: #ffffff;
+            text-align: justify;
+            line-height: 17px;
+            font-size: 13px;
+            border-top: 1px solid #ddd;
+            .title {
+                color: #ed1c24;
+            }
+            .powered {
+                color: #ed1c24;
+                margin-top: 3px;
+                text-align: center;
+                &:hover {
+                    background: #ffffff;
+                }
+                .mls-info {
+                    margin-top: 15px;
+                }
+                input[type=text] {
+                    height: 30px;
+                    background-color: #d1f0fb;
+                    border-radius: 0px;
+                    border: none;
+                    width: 80%;
+                    vertical-align: middle;
+                    margin: 10px 0;
+                    color: #f33536;
+                }
+            }
+            .title {
+                font-family: $font-proximanova-bold;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                color: #ffffff;
+            }
+            .add-remarks {
+                .title {
+                    color: blue;
+                    cursor: pointer;
+                }
+            }
+            .adding-remarks {
+                textarea {
+                    width: 270px;
+                }
+                button {
+                    display: inline-block;
+                    margin-left: 10px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+}

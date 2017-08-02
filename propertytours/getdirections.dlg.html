@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h3>Get Directions</h3>
+</div>
+<div class="modal-body">
+    <label>From</label><input id="rea_getdirections" placeholder="Enter Starting Location" type="text" class="form-control" ng-model="data.fromloc">
+    <br><label>To</label><br><span>{{data.toloc}}</span>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

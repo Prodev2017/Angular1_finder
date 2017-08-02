@@ -1,0 +1,306 @@
+<article class="item-message"   id="rea_msg_{{msg.message.id}}">
+    <!-- <hr> -->
+    <div class="wrapp-thread-message" ng-class="msg.threads.length > 0 ? 'is-thread':''">
+        <section class="parent-message">
+            <img class="sender-icon" ng-src="{{domain + msg.message.sendericon}}">
+            <section ng-class="msg.message.userid==0?'content-messagetwo hightlight':'content-message'">
+                <section class="header">
+                    <span class="sender-name">{{msg.message.sendername}}</span>
+                    <span class="time-stamp">{{msg.message.adddate}}</span>
+                </section>
+                <section class="message-bubble">
+                    <section class="body">
+                        <div class="searchtarget" ng-bind-html="msg.message.body | hightlight: mpc.searchBottom"></div>
+                    </section>
+                    <section class="urlinfo">
+                        <article class="item" ng-repeat="urlsummary in msg.message.urlsummaries">
+                            <img class="favicon" ng-src="{{urlsummary.favicon}}">
+                            <span class="title searchtarget">{{urlsummary.title}}</span>
+                            <div class="description searchtarget">{{urlsummary.description}}</div>
+                            <a href="{{urlsummary.url}}" target="_blank" class="urlinfo-thumb"><img class="image" ng-src="{{urlsummary.image}}"></a>
+                        </article>
+                    </section>
+                    <!-- <section class="buttons control-message">
+                         <button ng-click="showmeParent=true"><span class="icon-share"><img src="images/icon-social-share.svg"></span>Share</button>
+                         <ul class="social-share" ng-show="showmeParent">
+                             <li>
+                                 <a href=""><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                             </li>
+                             <li>
+                                 <a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                             </li>
+                             <li>
+                                 <a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                             </li>
+                             <li>
+                                 <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                             </li>
+                             <li>
+                                 <button ng-click="showmeParent=false">Close</button>
+                             </li>
+                         </ul>
+                     </section>-->
+                </section>
+            </section>
+        </section>
+        <section class="threads child-message"  ng-class="{'no-border': isLast, hilite: msg.Hilite()}">
+            <section class="count-reply" ng-if="msg.threads.length >= 0">
+                <button class="media" ng-click="mpc.toggleHideShowMessages(msg);ScrollToReply(msg); FocusOnReply(msg);" ng-mouseenter="mpc.openThreadsOnDelay(msg)" ng-mouseleave="mpc.mouseLeaveToggle()">
+                    <div class="media-left">
+                        <img ng-if="msg.threads.length>0" class="media-object" src="images/icon-arrow-reply.svg">
+                    </div>
+                    <div class="media-body">
+                        <span ng-if="msg.threads.length>0" class="count">{{msg.threads.length}} {{msg.threads.length > 1 ? "Replies":"Reply"}}</span>
+                        <div class="pull-right">
+                            <a>Reply to this message</a>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            <span class="fa fa-chevron-right"></span>
+                            &nbsp;
+                        </div>
+                    </div>
+                </button>
+            </section>
+            <section class="content-child-message" ng-show="msg._showThreads">
+                <!-- ng-init="msg._showThreads = mpc.searchBottom&&thread.data.body.indexOf(mpc.searchBottom) >= 0 ? true : false" -->
+                <section
+                        class="thread item-message"
+                        ng-repeat="thread in msg.threads"
+                        
+                        ng-class="{'is-new': thread.adddate === today}">
+                    <img class="sender-icon" ng-src="{{domain + thread.sendericon}}">
+                    <section ng-class="thread.userid==0?'content-messagetwo hightlight':'content-message'">
+                        <section class="header">
+                            <span class="sender-name">{{thread.sendername}}</span>
+                            <span class="time-stamp">{{thread.adddate }}</span>
+                        </section>
+                        <article ng-if="thread.type=='reply'">
+                            <div class="reply searchtarget" ng-bind-html="thread.data.body | hightlight: mpc.searchBottom"></div>
+                            <section class="urlinfo">
+                                <article class="item" ng-repeat="urlsummary in thread.data.urlsummaries">
+                                    <img class="favicon" ng-src="{{urlsummary.favicon}}">
+                                    <span class="title searchtarget" ng-bind-html="urlsummary.title | hightlight: mpc.searchBottom"></span>
+                                    <div class="description searchtarget" ng-bind-html="urlsummary.description | hightlight: mpc.searchBottom"></div>
+                                    <a href="{{urlsummary.url}}" target="_blank" class="urlinfo-thumb"><img class="image" ng-src="{{urlsummary.image}}"></a>
+                                </article>
+                            </section>
+                            <!--<div class="buttons control-message">
+                                <button ng-click="showme=true"><span class="icon-share"><img src="images/icon-social-share.svg"></span>Share</button>
+                                <ul class="social-share" ng-show="showme">
+                                    <li>
+                                        <a href=""><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <button ng-click="showme=false">Close</button>
+                                    </li>
+                                </ul>
+                            </div>-->
+                        </article>
+                        <article ng-if="thread.type=='attachment'&&thread.data.type=='propertysearch'">
+                            <div class="description searchtarget" ng-bind-html="thread.data.comment | hightlight: mpc.searchBottom"></div>
+                            <div class="property-search">
+                                <i class="fa fa-search"></i> <span class="searchtarget" ng-bind-html="thread.data.name | hightlight: mpc.searchBottom"></span> <a ui-sref="search({searchName:thread.data.name})"><button class="btn btn-primary btn-sm">Run Search</button></a>
+                            </div>
+                            <div class="buttons control-message">
+                                <button ng-click="showme=true"><span class="icon-share"><img src="images/icon-social-share.svg"></span>Share</button>
+                                <ul class="social-share" ng-show="showme">
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertySearch('whatsapp', thread.data.name)"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertySearch('facebook', thread.data.name)"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertySearch('youtube', thread.data.name)"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    </li>
+                                   
+                                    <li>
+                                        <a href=""
+                           
+                                        ng-click="mpc.SharePropertySearch('twitter', thread.data.name)">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertySearch('linkedin', thread.data.name)"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <button ng-click="showme=false">Close</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article ng-if="thread.type=='attachment'&&thread.data.type=='propertylist'">
+                            <div class="description searchtarget" ng-bind-html="thread.data.comment | hightlight: mpc.searchBottom"></div>
+                            <div class="property-search">
+
+                                <i class="fa fa-address-card-o icons-proper"></i>
+                                <div class="desc">
+                                    <span class="name-proper searchtarget" ng-html-bind="thread.data.name  | hightlight: mpc.searchBottom"></span>
+                                </div>
+                                <a ui-sref="propertylist({name:thread.data.name})" class="btn btn-proper">
+                                    <span class="icon icon-view-proper"></span>
+                                    <span class="text">View</span>
+                                </a>
+                            </div>
+                            <div class="buttons control-message">
+                                <button ng-click="showme=true"><span class="icon-share"><img src="images/icon-social-share.svg"></span>Share</button>
+                                <ul class="social-share" ng-show="showme">
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyList('whatsapp', thread.data.name)"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyList('facebook', thread.data.name)"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyList('youtube', thread.data.name)"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyList('twitter', thread.data.name)"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyList('linkedin', thread.data.name)"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <button ng-click="showme=false">Close</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article ng-if="thread.type=='attachment'&&thread.data.type=='propertytour'">
+                            <div class="description searchtarget" ng-bind-html="thread.data.comment | hightlight: mpc.searchBottom"></div>
+                            <div class="property-search">
+                                <i class="fa fa-car"></i> <span class="searchtarget">{{thread.data.name}}</span> <a ui-sref="propertytour({name: thread.data.name})"><button class="btn btn-primary btn-sm">View Tour</button></a>
+                            </div>
+                            <div class="buttons control-message">
+                                <button ng-click="showme=true"><span class="icon-share"><img src="images/icon-social-share.svg"></span>Share</button>
+                                <ul class="social-share" ng-show="showme">
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyTour('whatsapp', thread.data.name)"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""  ng-click="mpc.SharePropertyTour('facebook', thread.data.name)"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyTour('youtube', thread.data.name)"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyTour('twitter', thread.data.name)"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    </li>
+                                  
+                                    <li>
+                                        <a href="" ng-click="mpc.SharePropertyTour('linkedin', thread.data.name)"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <button ng-click="showme=false">Close</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                         <article ng-if="thread.type=='attachment'&&thread.data.type=='property'">
+                            <div class="description searchtarget" ng-bind-html="thread.data.comment | hightlight: mpc.searchBottom"></div>
+                            <message-property-card class="property-card message-property-card" property="thread.data.propertyinfo" ng-click="mpc.ShowPropertyDetails(thread.data.propertyinfo)"></message-property-card>
+                            <div class="buttons control-message">
+                                <button ng-click="showme=true"><span class="icon-share"><img src="images/icon-social-share.svg"></span>Share</button>
+                                <ul class="social-share" ng-show="showme">
+                                    <li>
+                                        <a href=""><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.ShareProperty('facebook', thread.data.propertyinfo)"><i class="fa fa-facebook-square" aria-hidden="true" ></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="mpc.ShareProperty('youtube', thread.data.propertyinfo)"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    </li>
+                                    <a href=""
+                           
+                                        ng-click="mpc.ShareProperty('twitter', thread.data.propertyinfo)">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                    <li>
+                                        <a href="" ng-click="mpc.ShareProperty('twitter', thread.data.propertyinfo)"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <button ng-click="showme=false">Close</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article> 
+                        <article ng-if="thread.type=='attachment'&&thread.data.type=='file'">
+                            
+                             <div class="description searchtarget" ng-bind-html="thread.data.comment | hightlight: mpc.searchBottom"></div> 
+                            <!-- <div class="description searchtarget">{{thread.data.comment | hightlight: mpc.searchBottom}}</div> -->
+                            <div class="pasted-file" ng-if="thread.data.pasted">
+                                <img ng-src="{{mpc.domain+thread.data.url}}">
+                            </div>
+                            <div class="property-search" ng-if="!thread.data.pasted">
+                                <a href="{{domain + thread.data.url}}"><i class="fa fa-file-text-o icon-proper"></i><span>{{thread.data.name}}</span></a>      
+                                <a class="btn btn-proper" ng-click="mpc.ViewFile(thread.data)">
+                                    <span class="icon icon-enlarge-file"></span>
+                                    <span class="text">View File</span>
+                                </a>
+                            </div>
+
+
+                            <div class="buttons control-message">
+                                <!-- <button ng-click="mpc.AddReply(msg)">Reply</button>
+                                <span class="dot">.</span> -->
+                                <button ng-click="showme=true"><span class="icon-share"><img src="images/icon-social-share.svg"></span>Share</button>
+                                <ul class="social-share" ng-show="showme">
+                                    <li>
+                                        <a href=""><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <button ng-click="showme=false">Close</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </section>
+                </section>
+                <article class="reply new">
+                    <section class="input-message" id="rea_msg_{{msg.message.id}}-reply">
+                        <textarea rows="2" id="rea_msg_{{msg.message.id}}-reply-message" placeholder="Type Reply Here...." ng-model="msg.replyText" ng-change="msg.ReplyTextChanged()" class="input-text-message" data-emojiable="true"></textarea>
+                        <button class="btn btn-primary btn-sm" ng-show="msg.showReplyControls" ng-click="mpc.AddReply(msg, $event)"><span>Send</span></button>
+                        <div class="btn-group btn-group-upload" uib-dropdown  is-open="isOpen">
+                            <i class="fa fa-paperclip add-attachment btn-upload" uib-dropdown-toggle></i>
+                            <ul class="dropdown-menu dropdown-menu-left" uib-dropdown-menu  role="menu" aria-labelledby="single-button">
+                                <li role="menuitem" ng-click="mpc.AddPropertySearch(msg)"><div class="icon-attach-wrapper"><img class="icon-attach" src="images/hartcourts/icon-attach-search.png"></div>Attach Property Search</li>
+                                <li role="menuitem" ng-click="mpc.AddPropertyTour(msg)"><div class="icon-attach-wrapper"><img class="icon-attach" src="images/hartcourts/icon-attach-tour.png"></div>Attach Property Tour</li>
+                                <li role="menuitem" ng-click="mpc.AddPropertyList(msg)"><div class="icon-attach-wrapper"><img class="icon-attach" src="images/hartcourts/icon-attach-list.png"></div>Attach Property List</li>
+                                <li role="menuitem" ng-click="mpc.AddUploadFile(msg)"><div class="icon-attach-wrapper"><img class="icon-attach" src="images/hartcourts/icon-attach-file.png"></div>Attach File</li>
+                            </ul>
+                              <input type="file" id="fileupload"/>
+                        </div>
+                        <!-- <div class="group-emoticon">
+                            <i class="fa fa-smile-o btn-emoticon" uib-dropdown-toggle></i>
+                            <ul class="dropdown-menu dropdown-menu-left" uib-dropdown-menu  role="menu" aria-labelledby="single-button">
+                                <li ng-repeat="icon in msg.iconChat" role="menuitem"><span class="emoji" id="{{icon.sprite}}" ng-click="msg.SendIcon(icon.data)" data-sign="{{icon.data}}">&nbsp;</span></li>
+                            </ul>
+                        </div> -->
+                    </section>
+                </article>
+            </section>
+        </section>
+    </div>
+</article>

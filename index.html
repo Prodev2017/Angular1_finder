@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="touchscroll" lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, user-scalable=no">
+        <title>Home Finder App</title>
+        <!--<base href="/">-->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="components/angular-motion.min.css">
+        <link rel="stylesheet" href="components/angular-carousel.css">
+        <link rel="stylesheet" href="components/sweetalert.css">
+        <link rel="stylesheet" href="components/unite-gallery.css">
+        <link rel="stylesheet" href="components/ug-theme-default.css">
+        <link rel="stylesheet" href="components/flexisel.css">
+        <link rel="stylesheet" href="components/jquery.fancybox.css">
+		<link rel="stylesheet" href="components/jquery.fancybox-buttons.css">
+		<link rel="stylesheet" href="components/jquery.fancybox-thumbs.css">
+		<link rel="stylesheet" href="components/perspectiveRules.css">
+		<link rel="stylesheet" href="components/slick.css">
+		<link rel="stylesheet" href="components/slick-theme.css">
+		<link rel="stylesheet" href="app.css">
+        <link href="lib/css/emoji.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="components/jquery_1.9.1.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="components/angular.js"></script>
+        <script src="components/angular-fullscreen.js"></script>
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+        <script src="components/slick.min.js"></script>
+        <script src="components/angular-slick.min.js"></script>
+        <script src="components/sweetalert.js"></script>
+        <script src="components/angular-aria.min.js"></script>
+        <script src="components/angular-animate.min.js"></script>
+        <script src="components/angular-sanitize.min.js"></script>
+        <script src="components/angular-touch.min.js"></script>
+        <script src="components/angular-ui-router.min.js"></script>
+        <script src="components/angular-file-upload.min.js"></script>
+        <script src="components/angular-sortable-view.min.js"></script>
+        <script src="components/angular-local-storage.min.js"></script>
+        <script src="components/angular-socialshare.js"></script>
+        <script src="components/paging.js"></script>
+        <script src="components/unitegallery.min.js"></script>
+        <script src="components/ug-theme-grid.js"></script>
+        <script src="components/pubsub.js"></script>
+        <script src="//maps.google.com/maps/api/js?key=AIzaSyDEGrhHf_tIMo-mdc1zCToGN81Zg2UbByI&libraries=places" type="text/javascript"></script>
+        <script src="components/shapeditors.js"></script>
+        <script src="components/jquery.flexisel.js"></script>
+		<script src="components/jquery.fancybox.js"></script>
+		<script src="components/jquery.fancybox-buttons.js"></script>
+		<script src="components/jquery.fancybox-thumbs.js"></script>
+		<script src="components/jquery.fancybox-media.js"></script>
+		
+		
+        <script src="platform.js"></script>
+        <script src="utils.js"></script>
+        <script src="lib/js/jquery.emojiarea.js"></script>
+        <script src="lib/js/emoji-picker.js"></script>
+        <script src="domain/usermgr.mdl.js"></script>
+        <script src="domain/featured.mdl.js"></script>
+        <script src="domain/userdata.mdl.js"></script>
+        <script src="domain/messages.mdl.js"></script>
+        <script src="domain/propertydata.mdl.js"></script>
+
+        <script src="modules/globalservices.mod.js"></script>
+        <script src="modules/home.mod.js"></script>
+        <script src="modules/myhomefinder.mod.js"></script>
+        <script src="modules/listingdetails.mod.js"></script>
+        <script src="modules/messages.mod.js"></script>
+        <script src="modules/search.mod.js"></script>
+        <script src="modules/propertylists.mod.js"></script>
+        <script src="modules/propertytours.mod.js"></script>
+        <script src="modules/theme.mod.js"></script>
+        <script src="modules/hfapp.mod.js"></script>
+        <script src="home/modal/video-modal-ctrl.js" type="text/javascript"></script>
+        <script src="lib/js/config.js"></script>
+        <script src="lib/js/util.js"></script>
+
+
+        <script>
+            !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
+                analytics.load("CxNM9bhuFoSDkahlrFXrAbqQi2JlHVus");
+                analytics.page();
+            }}();
+        </script>
+		
+		<script src="components/jquery.particleground.min.js"></script>
+		<script src="components/jquery.logosDistort.js"></script>
+    </head>
+
+    <body ng-app="hfApp" class="{{ classPageBody }}">
+        <div id="site-wrapper" class="{{ classPage }}">
+            <theme-header></theme-header>
+
+            <!-- MAIN CONTENT -->
+
+            <div class="dvc_main-content {{ classMain }}" id="dvc-main">
+                <div class="dvc_content-wrap" style="height:auto; max-height:auto; ">
+                    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+                    <div style="height:100%;" ui-view></div>
+                </div>
+                <!-- .content-wrap -->
+				
+				<theme-footer></theme-footer>
+            </div>
+
+            <photo-viewer class="rea-photo-viewer" style="display:none;" onclick="event.stopPropagation()">
+                <div class="header" onclick="event.stopPropagation()">
+                    <div class="title">{{title}}</div>
+                    <div class="closebutton" onclick="PubSub.publish('photoviewer.close')"><i class="fa fa-times"></i></div>
+                </div>
+                <div id="rea_unitegallery"></div>
+            </photo-viewer>
+
+        </div>
+    </body>
+</html>

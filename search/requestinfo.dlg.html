@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <h3>Request More Info</h3>
+</div>
+<div class="modal-body">
+
+    <div class="formitem">
+        <label>Message</label>
+        <input type=text ng-model="data.message" class="form-control">
+    </div>
+
+    <div ng-if="data.requestCInfo">
+
+        <input type="radio" name="acct" checked ng-click="data.showcinfo=true">Create Free Account &nbsp; <input type="radio" name="acct" ng-click="data.showcinfo=false">Continue As Guest
+
+        <div ng-show="data.showcinfo">
+
+            <div ng-class="{warning:data.fnameerror}" class="formitem">
+                <label>First Name</label>
+                <input type=text ng-model="data.fname" class="form-control">
+            </div>
+
+            <div ng-class="{warning:data.lnameerror}" class="formitem">
+                <label>Last Name</label>
+                <input type=text ng-model="data.lname" class="form-control">
+            </div>
+
+            <div ng-class="{warning:data.emailerror}" class="formitem">
+                <label>E-Mail</label>
+                <input type=text ng-model="data.email" class="form-control">
+            </div>
+
+            <div ng-class="{warning:data.phoneerror}" class="formitem">
+                <label>Phone Number</label>
+                <input type=text ng-model="data.phone" class="form-control">
+            </div>
+
+            <div ng-class="{warning:data.pwderror}" class="formitem">
+                <label>Password</label>
+                <input type=password ng-model="data.password" class="form-control">
+            </div>
+
+            <div class="formitem">
+                <label>Confirm Password</label>
+                <input type=password ng-model="data.confpassword" class="form-control">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

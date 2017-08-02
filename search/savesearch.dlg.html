@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <button class="close" ng-click="cancel()">&times;</button>
+    <h3 class="heading-modal">Save Search</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label for="searchName">Name</label>
+        <input type=text ng-model="search.name" maxlength="32" id="searchName" class="form-control">
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+

@@ -1,0 +1,19 @@
+<div class="carousel-item-inner community-image">
+    <a ng-href="#!/community/{{community.name|spaceless}}">
+    <img class="carousel-img" ng-src="{{hpc.domain+community.photourl}}">
+    <div class="carousel-content">
+        <h2>{{community.name}}</h2>
+        <h3>{{community.city}}</h3>
+        <h4>456 Listings</h4>
+    </div>
+    <div class="carousel-item-back">
+        <img class="carousel-img" ng-src="{{hpc.MapUrl(community)}}">
+        <div class="carousel-content">
+            <h2>{{community.name}}</h2>
+            <h3>{{community.city}}</h3>
+            <span class="btn-outline" ui-sref="search({ name: 'community='+community.name.replace(' ','-') })">View Listings</span>
+            <span class="btn-outline" ui-sref="community({ pageName: community.name.replace(' ','-') })">View Info</span>
+        </div>
+    </div>
+    </a>
+</div>

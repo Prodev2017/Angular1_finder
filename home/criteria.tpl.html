@@ -1,0 +1,110 @@
+<div class="criteria">
+    <div class="left-col">
+        <section>
+            <div class="dual-field">
+                <label>List Price: </label>
+                <select name="min-price">
+                    <option ng-repeat="option in hsbc.criteria.minlistprice" value="{{option.value}}">{{option.name}}</option>
+                </select>
+                &nbsp;To&nbsp;
+                <select name="max-price">
+                    <option ng-repeat="option in hsbc.criteria.maxlistprice" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="dual-field">
+                <label>Beds: </label>
+                <select name="min-beds">
+                    <option ng-repeat="option in hsbc.criteria.minbeds" value="{{option.value}}">{{option.name}}</option>
+                </select>
+                &nbsp;To&nbsp;
+                <select name="max-beds">
+                    <option ng-repeat="option in hsbc.criteria.maxbeds" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="dual-field">
+                <label>Baths: </label>
+                <select name="min-baths">
+                    <option ng-repeat="option in hsbc.criteria.minbaths" value="{{option.value}}">{{option.name}}</option>
+                </select>
+                &nbsp;To&nbsp;
+                <select name="max-baths">
+                    <option ng-repeat="option in hsbc.criteria.maxbaths" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="dual-field">
+                <label>Square Feet: </label>
+                <select name="min-sqft">
+                    <option ng-repeat="option in hsbc.criteria.minsqft" value="{{option.value}}">{{option.name}}</option>
+                </select>
+                &nbsp;To&nbsp;
+                <select name="max-sqft">
+                    <option ng-repeat="option in hsbc.criteria.maxsqft" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="dual-field">
+                <label>Lot Size: </label>
+                <select name="min-lotsize">
+                    <option ng-repeat="option in hsbc.criteria.minlotsize" value="{{option.value}}">{{option.name}}</option>
+                </select>
+                &nbsp;To&nbsp;
+                <select name="max-lotsize">
+                    <option ng-repeat="option in hsbc.criteria.maxlotsize" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="dual-field">
+                <label>Year Built: </label>
+                <select name="min-yearbuilt">
+                    <option ng-repeat="option in hsbc.criteria.minyearbuilt" value="{{option.value}}">{{option.name}}</option>
+                </select>
+                &nbsp;To&nbsp;
+                <select name="max-yearbuilt">
+                    <option ng-repeat="option in hsbc.criteria.maxyearbuilt" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="single-field">
+                <label>Parking: </label>
+                <select name="parking">
+                    <option ng-repeat="option in hsbc.criteria.minparking" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="single-field">
+                <label>Fees: </label>
+                <select name="hoafees">
+                    <option ng-repeat="option in hsbc.criteria.maxhoa" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="single-field">
+                <label>Days: </label>
+                <select name="dom">
+                    <option ng-repeat="option in hsbc.criteria.dom" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="single-field">
+                <label>Price Red: </label>
+                <select name="pricereduced">
+                    <option ng-repeat="option in hsbc.criteria.pricereduced" value="{{option.value}}">{{option.name}}</option>
+                </select>
+            </div>
+        </section>
+    </div>
+    <div class="right-col">
+        <section>
+            <div class="full-field">
+                <label>Property Types: </label>
+                <div class="property-checkboxes">
+                    <div class="checkbox" ng-repeat="option in hsbc.criteria.types"><input type="checkbox" name="propertytype" value="{{option.value}}" checked>{{option.name}}</div>
+                </div>
+            </div>
+            <div class="full-field">
+                <label>Special Conditions: </label>
+                <div class="checkboxes">
+                    <div class="checkbox" ng-repeat="option in hsbc.criteria.specialconditions"><input type="checkbox" name="specialcond" value="{{option.value}}" checked>{{option.name}}</div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="bottom-col">
+        <button class="btn btn-sm btn-primary" ng-click="">Update</button>
+        <button class="btn btn-sm btn-danger">Reset</button>
+    </div>
+</div>

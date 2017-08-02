@@ -1,0 +1,12 @@
+node_modules/
+bower_components/
+server.js
+dist/
+/nbproject/
+.vscode
+yarn.lock
+.DS_Store
+.idea/
+app.js*
+app.css*
+fonts/

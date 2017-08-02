@@ -1,0 +1,12 @@
+<section class="toolbar">
+    <input type="search" class="searchbox" ng-model="vm.searchText" ng-keydown="vm.StartSearch()">
+    <button class="fa fa-chevron-up scrolltostart" ng-click="vm.ScrollToStart()"></button>
+    <button class="fa fa-chevron-down scrolltoend" ng-click="vm.ScrollToEnd()"></button>
+    <button class="fa fa-plus addmessage" ng-click="vm.NewMessage()"></button>
+</section>
+<section class="messages">
+     <message ng-repeat="msg in vm.messages"></message>
+</section>
+<section>
+    <new-message></new-message>
+</section>

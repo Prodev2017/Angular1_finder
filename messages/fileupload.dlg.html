@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3>Upload a File ?</h3>
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+</div>
+<div class="modal-body">
+    <div class="col-md-12 inline">
+        <label class="inline_block">Title</label>
+        <input type="text" class="small title_input" ng-model="title" >
+    </div>
+    <div class="col-md-12 inline">
+        <label class="inline_block">Comment</label>
+        <textarea type="text" class="small title_input" ng-model="comment"></textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" ng-click="cancel()" class="btn btn-s">
+        <span class="glyphicon"></span> Cancel
+    </button>
+    <button type="button" ng-click="ok()" class="btn btn-success btn-s">
+        <span class="glyphicon glyphicon-upload"></span> Upload
+    </button>
+</div>

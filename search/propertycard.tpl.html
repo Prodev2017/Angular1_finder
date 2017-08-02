@@ -1,0 +1,159 @@
+<!-- <div class="property-photo" id="rea_search_property_id_{{property.listingid}}" ng-class="{hilite: slc.hiliteListingID==property.listingid}" ng-click="slc.ShowDetails(property)" ng-mouseenter="slc.ShowOnMap(property)"> -->
+
+<div class="property-photo" id="rea_search_property_id_{{property.listingid}}" ng-class="{hilite: slc.hiliteListingID==property.listingid}" ng-mouseenter="slc.ShowOnMap(property)" hover-image-effect="property-bg" ng-click="slc.ShowDetails(property)">
+
+
+    <div class="off-market" ng-show="property.archivedate">Off Market {{property.archivedate}}</div>
+    <div class="property-inner">
+        <!-- <img ng-src="{{slc.domain+property.firstphotourl}}" class="property-bg"> -->
+        <div class="property-img-container">
+			<img ng-src="{{slc.domain+property.firstphotourl}}" class="property-bg">
+		</div>
+        <div style="background: -webkit-linear-gradient(#000, transparent);
+                                                        background: -o-linear-gradient(#000, transparent);
+                                                        background: -moz-linear-gradient(#000, transparent);
+                                                        background: linear-gradient(#000, transparent); 
+                                                        position: absolute; 
+                                                        width: 100%; 
+                                                        height: 100px; 
+                                                        top: -20px;">
+            
+        </div>
+        <section class="photo-top">
+            <div class="sc" ng-if="property.specialconditions!=''" ng-repeat="cond in property.specialconditions track by $index"><span>{{cond}}</span></div>
+            <div class="list-buttons" ng-click="$event.stopPropagation()">
+                <i data-toggle="tooltip" class=hoveronly" title="View Photos" ng-show="{{property.photocount>1}}" ng-click="$event.stopPropagation();spc.ViewPhotos(property);">
+                    <div></div>
+                    <img src="images/cardicons/photos.svg"></img>
+                </i>
+                <!-- <i data-toggle="tooltip" title="Request Info" ng-click="$event.stopPropagation();spc.RequestInfo(property);">
+                    <div></div>
+                    <img src="images/cardicons/photos.svg"></img>
+                </i>                 -->
+                <i ng-if="slc.includesMap" data-toggle="tooltip" class="hoveronly" title="Show on Map" ng-click="$event.stopPropagation();slc.ZoomToListing(property);">
+                    <div></div>
+                    <img src="images/cardicons/showonmap.svg"></img>
+                </i>
+                <i>
+                    <div></div>
+                    <img src="images/cardicons/save.svg" data-toggle="tooltip" title="Save This Property" ng-show="property.savedpropertyid==0" ng-click="$event.stopPropagation();spc.SaveProperty(property, $event);"></img>
+                    <span class="click-save">
+                        <span>SAVED</span>
+                        <img src="images/cardicons/greenarrow.svg" ng-show="property.savedpropertyid!=0">
+                    </span>
+                </i>
+                <i data-toggle="tooltip" title="Request Info" ng-click="$event.stopPropagation();spc.RequestInfo(property);">
+                    <div></div>
+                    <img src="images/cardicons/info.svg"></img>
+
+                </i>
+                <!-- <i data-toggle="tooltip" title="Request Info" ng-click="$event.stopPropagation();spc.RequestInfo(property);">
+                    <div></div>
+                    <img src="images/icon-menu.png"></img>
+                </i>                 -->
+            </div>
+        </section>
+        <section class="photo-bottom">
+            <article>
+                <div class="info-card left">
+                    <div class="list-price">{{property.listprice | currency:'$':0}}</div>   
+                    <div class="address">{{property.address}}</div>
+                    <div class="cs">
+                        <span>{{property.city}}, {{property.state}} {{property.postalcode}}</span>
+                    </div>
+                </div>
+                <div class="info-card right">
+
+
+
+                    <div class="property-type">
+                        {{property.propertytype}}
+                        <div class="type-img-container">
+							<img class="{{property.propertytype.toLowerCase()}}">
+						</div>
+                    </div>
+
+
+
+                    <div class="bb-search">
+                        <div class="bb-item">{{property.beds}} <span>Beds</span></div>
+                        <div class="bb-item">{{property.baths}} <span>Baths</span></div>
+                        <div class="bb-item">{{property.sqft | nanumber}} <span>Sq. Ft.</span></div>
+                    </div>
+                </div>
+
+
+            </article>
+        </section>
+        <section class="info-more" ng-click="$event.stopPropagation();" ng-init="showdetails=sbc.showExtended">
+            <div class="info-more-col">Days: <span>{{property.dom}}</span></div>
+            <div class="info-more-col">Year: <span>{{property.yearbuilt}}</span></div>
+            <div class="info-more-col">Fees: <span>${{property.ppsqft | number:0}}</span></div>
+            <div class="info-more-col">MLS® #: <span>{{property.listingid}}</span></div>
+            <div class="info-more-col">
+                <!-- <button class="btn btn-link" ng-show="true" ng-click="sbc.showExtended=!sbc.showExtended">details <i class="fa fa-angle-down" aria-hidden="true"></i></button> -->
+                <!-- <button class="btn btn-link" ng-click="$event.stopPropagation();spc.ShowDetailsPanel(property);">details <i class="fa fa-angle-down" aria-hidden="true"></i></button> -->
+                <button class="btn btn-link" ng-click="$event.stopPropagation();showdetails=!showdetails">Details <!--<i class="fa fa-angle-down" aria-hidden="true"></i>--></button>
+<!--
+                <button class="btn btn-link" ng-click="$event.stopPropagation();showdetails=!showdetails">
+                <img src="images/expanddetails.svg" width="20px" aria-hidden="true">
+                 Details</button>
+-->
+            </div>
+        </section>
+        <!-- <div class="background-click" ng-click="slc.ShowDetails(property)" style="position: absolute;width: 100%;height: 100%;top: 0px"></div> -->
+    </div>
+    <div class="extended" ng-show="sbc.showExtended||showdetails">
+<!--
+        <div class="add-comment">
+            <a href="javascript:;">Add Comment</a>
+        </div>
+-->
+        <div class="remarks"><div class="title">Remarks</div>{{property.remarks}} ...<br /><br />
+            <div class="powered">
+            <i>{{property.brokername}}</i></div></div>
+
+        <div class="content">
+
+            <div class="author-detail-horizontal" style="margin-top: 30px;">
+                <div class="wrap-img">
+                    <span class="author-images"><img src="images/hartcourts/avatar.png" ></span>
+                </div>
+                <div class="info">
+                    <h3 class="author-name" style="text-align:center;">David Chen</h3>
+                    <h6 class="agent_comments"style="text-align:center;">PREC, RE/MAX Crest West Coast Realty</h6>
+
+                    <span class="author-message">
+                    <span class="fa fa-comments"></span>
+                </span>
+                    <span class="author-call">
+                    <span class="fa fa-phone"></span>
+
+                </span>
+
+                    <div class="info">
+                    <p><img src="images/hartcourts/mls-logo-white.svg" width="23%"  alt="logo menities" style="float: right;margin-left: 10px;" class="amenities-desc-img">
+                        <font color="white" size="1"  alt="author">The data relating to real estate on this website comes in part from the MLS® Reciprocity program of either the Real Estate Board of Greater Vancouver (REBGV), the Fraser Valley Real Estate Board (FVREB) or the Chilliwack and District Real Estate Board (CADREB). </p>
+                    </div>
+
+                        <div class="remarks" ><div class="powered">Powered by <a href="http://www.reala.ca">reala.ca</a></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+</div>
+<!-- <div class="extended" ng-show="sbc.showExtended" ng-class="sbc.showExtended == false ? 'active' : ''">
+    <div class="properties">
+        <div class="row">
+            <div class="col-sm-6"><label>Price/SqFt</label><div class="value">{{property.ppsqft | nacurrency}}</div></div>
+            <div class="col-sm-6"><label>Fees</label><div class="value">{{property.hoafees | nacurrency}}</div></div>
+        </div>
+    </div>
+    <div class="properties">
+        <div class="row">
+            <div class="col-sm-6"><label>Lot Size</label><div class="value">{{property.lotsize | nanumberacres}}</div></div>
+            <div class="col-sm-6"><label>Year Built</label><div class="value">{{property.yearbuilt}}</div></div>
+        </div>
+    </div>
+    <div class="remarks"><div class="title">Remarks</div>{{property.remarks}} ...</div>
+</div> -->

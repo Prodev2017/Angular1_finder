@@ -1,0 +1,97 @@
+<home-pane>
+    <section class="search-bar search-bar-home">
+        <home-search-bar></home-search-bar>
+    </section>
+    <section class="container-fluid featured" ng-controller="homePaneCtrl">
+        <section class="communities">
+            <div class="spacing"></div>
+            <div class="spacing"></div>
+            <section class="title-section-carousel">BROWSE BY COMMUNITIES</section>
+            <section class="gallery">
+                <!--ng-href="#!/community/{{community.name|spaceless}}"  -->
+                	<ul id="flexisel" >
+						<li ng-repeat="community in hpc.featuredCommunities track by $index" community-pane>
+							<img class="carousel-img" ng-if="community.photourl!=''" ng-src="{{hpc.domain+community.photourl}}">
+							<img class="carousel-img" ng-if="community.photourl==''" src="images/Burnaby Lake.jpg">
+							<!-- {{hpc.domain+community.photourl}} -->
+
+							<div class="picture-gradient">
+								<img class="carousel-hover-img" ><!-- ng-src="{{hpc.MapUrl(community)}}"> -->
+								<div class="gradient"/>
+								<div class="carousel-label">
+									<div class="carousel-content">
+										<h3 class="titlehilight">{{community.name}}</h3></span>
+										<h4 class="subtitlehilight">{{community.city}}</h4></span>
+										<span class="btn-outline carousel-button" title="View Listings" ui-sref="search({ name: 'community='+community.name.replace(' ','-') })">View Listings</span>
+										<span class="btn-outline carousel-button" title="View Community" ui-sref="community({ pageName: community.name.replace(' ','-') })">View Community</span>
+									</div>
+								</div>
+							</div>
+							<div class="carousel-label">
+								<div class="carousel-content">
+									<h3 class="title">{{community.name}}</h3>
+									<h4 class="subtitle">{{community.city}}</h4>
+
+								</div>
+								<!-- <div class="carousel-item-back">
+									<img class="carousel-img" ng-src="{{hpc.MapUrl(community)}}">
+									<div class="carousel-content">
+										<h2>{{community.name}}</h2>
+										<h3>{{community.city}}</h3>
+										<span class="btn-outline" ui-sref="search({ name: 'community='+community.name.replace(' ','-') })">View Listings</span>
+										<span class="btn-outline" ui-sref="community({ pageName: community.name.replace(' ','-') })">View Info</span>
+									</div>
+								</div> -->
+							</div>
+						</li>
+					</ul>
+				
+                       <!--
+                       <slick settings="hpc.communitiesSlider" class="carousel-style-1">
+                       <div ng-repeat="community in hpc.featuredCommunities">
+                           <featured class="carousel-item active" ng-if="community === null">
+                                <div class="carousel-item-inner community-image" ng-click="showDetails(community)">
+                                    <img class="carousel-img" ng-src="images/hartcourts/img-hover-2.jpg">
+                                    <div class="carousel-content">
+                                        <h4>456 Listings</h4>
+                                    </div>
+                                    <div class="carousel-item-back">
+                                        <img class="carousel-img" src="images/hartcourts/img-hover-2.jpg">
+                                        <div class="carousel-content">
+                                            <h2>View ALL Communities</h2>
+                                            <a ui-sref="allcommunities">
+                                                <span class="btn-outline">Click here</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </featured>
+                            <featured-community-card ng-if="community" class="carousel-item">
+                            </featured-community-card>
+                        </div>
+                        </slick>
+                    -->
+            </section>
+        </section>
+    </section>
+    <div class="spacing"></div>
+    <div class="spacing"></div>
+    <section class="properties container-fluid">
+        <section class="title-section-carousel">Featured Properties</section>
+        <section class="gallery">
+            <ul id="propertyCarousel" >
+				
+				<li ng-repeat="property in hpc.featuredProperties" property-repeater>
+					<featured-property-card/>
+				</li>
+				
+			</ul>
+        </section>
+    </section>
+    <section class="more-properties text-center">
+        <button ui-sref="allfeaturedproperties" class="btn-boxes">VIEW MORE</button>
+    </section>
+    <div class="spacing"></div>
+    <div class="spacing"></div>
+    <div class="spacing"></div>
+</home-pane>

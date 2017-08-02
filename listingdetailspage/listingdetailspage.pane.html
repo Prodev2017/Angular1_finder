@@ -1,0 +1,576 @@
+
+
+<listing-details-page class="property-details full-detail" ng-init="hoverTour = false; hoverFloor = false;">
+    <div class="reala-search-wrapper">
+        <!--    <div class="reala-search-inner">
+              <div class="reala-form-col reala-form-col-key-search reala-form-col-full search-lookup-box input-group stylish-input-group">
+                <input id="rea_home_searchbar" type="text" placeholder="Enter City, Address, Street or Community">
+                <button><img src="images/searchform/icon-search.png"></button>
+                <div class="search-lookups ng-hide" id="rea_home_areas" ng-show="hsbc.showLookup">
+                  <ul class="search-lookups-inner">
+                    <li class="group-search">
+                      <ul class="group-search-inner">
+                        <li class="title-group"><img class="icon-group" src="images/hartcourts/house-icon.png">Cities</li>
+                        <li class="item-search">
+                            <div class="area-label">Burnaby</div>
+                            <div class="area-reference">Vancouver</div>
+                        </li> .item-search 
+                        <li class="item-search">
+                            <div class="area-label">Metrotown</div>
+                            <div class="area-reference">Vancouver</div>
+                        </li> .item-search 
+                        <li class="item-search">
+                            <div class="area-label">Chillwack</div>
+                            <div class="area-reference">Fraser Valley</div>
+                        </li> .item-search 
+                      </ul>
+                    </li> .group-search 
+                    <li class="group-search">
+                      <ul class="group-search-inner">
+                        <li class="title-group"><img class="icon-group" src="images/hartcourts/house-icon.png">Streets</li>
+                        <li class="item-search">
+                            <div class="area-label">Elm</div>
+                            <div class="area-reference">Burnaby,Vancouver</div>
+                        </li> .item-search 
+                        <li class="item-search">
+                            <div class="area-label">Elgar</div>
+                            <div class="area-reference">Metrotown,Vancouver</div>
+                        </li> .item-search 
+                        <li class="item-search">
+                            <div class="area-label">Edgemont</div>
+                            <div class="area-reference">Metrotown,Vancouver</div>
+                        </li> .item-search 
+                      </ul>
+                    </li> .group-search 
+                    <li class="group-search">
+                      <ul class="group-search-inner">
+                        <li class="title-group"><img class="icon-group" src="images/hartcourts/house-icon.png">Communities</li>
+                        <li class="item-search">
+                            <div class="area-label">Arbutus Ridge</div>
+                            <div class="area-reference">West Side,Vancouver</div>
+                        </li> .item-search 
+                        <li class="item-search">
+                            <div class="area-label">False Creek</div>
+                            <div class="area-reference">West Side,Vancouver</div>
+                        </li> .item-search 
+                      </ul>
+                    </li> .group-search 
+                    <li class="group-search">
+                      <ul class="group-search-inner">
+                        <li class="title-group"><img class="icon-group" src="images/hartcourts/house-icon.png">Schools</li>
+                        <li class="item-search">
+                            <div class="area-label">Eisenhower Elementary School</div>
+                            <div class="area-reference">West Side,Vancouver</div>
+                        </li> .item-search 
+                      </ul>
+                    </li> .group-search 
+                  </ul>
+                </div>
+              </div>
+            </div>-->
+    </div>
+    <div class="listing-details">
+        <div class="inner">
+            <p>{{property.address}}</p>
+            <span>{{property.propertytype}} - {{property.city}}, {{property.state}}</span>
+        </div>
+    </div>
+    <div>
+        <div class="listing-photo-map">
+            <div class="photos">
+                <div uib-carousel active="active" class="carousel">
+                    <div uib-slide ng-repeat="prop in property.photourls track by prop.id" index="prop.id">
+                        <img ng-src="{{prop.image1}}" class="half-image">
+                        <img ng-src="{{prop.image2}}" class="half-image">
+                    </div>
+                    <div class="buttons">
+                        <button class="btn" ng-click="ldt.expandPhotos(property.photourls, true)">
+                            <img class="expand-photo">
+                            {{(property.photourls.length)*2 | number}} Photos
+                        </button>
+                        <button class="btn" ng-click="ldt.saveProperty(property)" ng-show="property.savedpropertyid==0">
+                            <span class="save-listing" />
+                            Save Listing
+                        </button>
+						<button class="btn btn-carousel-saved" ng-show="property.savedpropertyid!=0" >
+							<span class="saved-listing" />
+							Saved Listing
+						</button>
+                    </div>
+                </div>
+            </div>
+            <section class="maps" id="rea_property_details_map">
+            </section>
+            <div class="map_button">
+                <button class="btn" ng-click="ldt.expandPhotos(property)">
+                    <span class="label">Expand Map</span>
+                    <span class="icon-map">
+                        <i class="icon expand-map"></i>
+                    </span>
+                </button>
+                
+                <button class="btn" ng-click="showpoi()">
+                    <span class="label">Points of interest</span>
+                    <span class="icon-map">
+                        <i class="icon poi-map"></i>
+                    </span>
+                </button>
+                
+                <button class="btn" ng-click="showaerial()">
+                    <span class="label">Aerial View</span>
+                    <span class="icon-map">
+                        <i class="icon aerial-map"></i>
+                    </span>
+                </button>
+                
+                <button class="btn" ng-click="showstreetview()">
+                    <span class="label">Street View</span>
+                    <span class="icon-map">
+                        <i class="icon street-map"></i>
+                    </span>
+                </button>
+                
+            </div>
+        </div>
+        <div class="property-header">
+            <div class="listing-header-left">
+                <div class="right">
+                    <span class="price">{{property.listprice| currency:'$':0}}</span>
+                    <span class="text">Mortgage Calculator</span>
+                </div>
+            </div>
+            <div class="bbs bathrooms listing-header-center">
+                <div class="wrapp-bathrooms">
+                    <div ng-show="property.beds" class="bathrooms-item">
+                        <span class="top">
+                            <span class="ico ico-bed-2"></span>
+                            <span class="number">{{property.beds}}</span>
+                        </span>
+                        <span class="bottom">Beds</span>
+                    </div>
+                    <div ng-show="property.baths" class="bathrooms-item">
+                        <span class="top">
+                            <span class="ico ico-bathroom"></span>
+                            <span class="number">{{property.baths}}</span>
+                        </span>
+                        <span class="bottom">Baths</span>
+                    </div>
+                    <div ng-show="property.sqft" class="bathrooms-item">
+                        <span class="top">
+                            <span class="ico ico-area"></span>
+                            <span class="number">{{property.sqft| number}}</span>
+                        </span>
+                        <span class="bottom">Approx Acres</span>
+                    </div>
+                    <div ng-show="property.sqft" class="bathrooms-item">
+                        <span class="top">
+                            <img class="lotsize" />
+                            <span class="number">{{property.ppsqft| number}}</span>
+                        </span>
+                        <span class="bottom">Lot Size Acres<sup>2</sup></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-action-buttons">
+            <div class="item-action">
+                <div class="content-hover" ng-click="showTour()">
+                    <div class="content-hover-inner">
+                        <img src="/images/listing-detail/img-tour.png">
+                        <div class="label">
+                            <img src="images/virtual-tour-white.png"/>
+                            <span>Virtual Tour</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" ng-click="showTour()">
+                    <img src="images/virtual-tour.png"/>
+                    Virtual Tour
+                </button>
+            </div>
+            
+            <div class="item-action">
+                <div class="content-hover" ng-click="showFloorPlan();">
+                    <div class="content-hover-inner">
+                        <img src="/images/listing-detail/img-floor-plan.png">
+                        <div class="label">
+                            <img src="images/virtual-tour-white.png"/>
+                            <span>Floor Plan</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" ng-click="showFloorPlan();">
+                    <img src="images/virtual-tour.png"/>
+                    Floor Plan
+                </button>
+            </div>
+            
+            <!---
+            <button class="btn" ng-class="{hover: hoverTour}" ng-mouseenter="hoverTour = true;" ng-mouseleave="hoverTour = false" ng-click="showTour()">
+                <img ng-show="!hoverTour" src="images/virtual-tour.png"/>
+                <img ng-show="hoverTour" src="images/virtual-tour-white.png"/>
+                Virtual Tour
+            </button>
+            <button class="btn" ng-class="{hover: hoverFloor}" ng-mouseenter="hoverFloor = true;" ng-mouseleave="hoverFloor = false" ng-click="showFloorPlan();">
+                <img ng-show="!hoverFloor" src="images/floor-plan.png"/>
+                <img ng-show="hoverFloor" src="images/floor-plan-white.png"/>
+                Floor Plan
+            </button>
+            -->
+        </div>
+        <!--
+        <div class="images-to-hover">
+            <img ng-show="hoverFloor" ng-mouseenter="hoverFloor = true;" ng-mouseleave="hoverFloor = false" class="floor-image" src="images/floor-background.jpg" />
+            <img ng-show="hoverTour" class="tour-background" src="images/tour-backgroung.jpg" />
+            <img ng-show="hoverTour" ng-mouseenter="hoverTour = true;" ng-mouseleave="hoverTour = false" class="tour-play" src="images/tour-play-icon.svg" />
+            <img ng-show="hoverFloor" ng-mouseenter="hoverFloor = true;" ng-mouseleave="hoverFloor = false" class="background" src="images/background-onmap-hover.png" />
+            <img ng-show="hoverFloor" ng-mouseenter="hoverFloor = true;" class="floor-icon" src="images/floor-hover-icon.png" />
+        </div>
+        -->
+    </div>
+    <!--    <div class="specification">
+            <div class="specification-intro">
+                <div class="specification-intro-item">
+                    <div class="inner-specification">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3">
+                                <h3 class="specification-title">Description</h3>
+                            </div>
+                            <div class="col-md-10 col-sm-9">
+                                <div class="specification-intro-content">
+                                    <p>{{property.remarks}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="specification-intro-item specification-item-popup">
+                    <h3 class="specification-title">Property Details</h3>
+                    <div class="inner-specification">
+                        <div class="list-property-details">
+                            <div class="property-item">
+                                <div class="property-name">Property Type:</div>
+                                <div class="property-unit">{{property.propertytype}}</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Title:</div>
+                                <div class="property-unit">Freehold NonStrata</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Listing ID</div>
+                                <div class="property-unit">{{property.listingid}}</div>
+                            </div>
+                            <div class="property-item">
+                                <span class="property-name">Lot Size</span>
+                                <span class="property-unit">{{property.lotsize}}</span>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Style:</div>
+                                <div class="property-unit">2 Storey w/Bsmt.</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Primary Agent</div>
+                                <div class="property-unit">Hayden Duncan</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Property Age:</div>
+                                <div class="property-unit">Built in 2016 (1 yrs old)</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Frontage:</div>
+                                <div class="property-unit">50.00</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Primary Broker</div>
+                                <div class="property-unit"> RE/MAX Select Properties</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Gross Taxes for 2016:</div>
+                                <div class="property-unit">$11,018</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Depth:</div>
+                                <div class="property-unit">122</div>
+                            </div>
+                            <div class="property-item">
+                                <div class="property-name">Area</div>
+                                <div class="property-unit"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    <div class="property-info-wrapper">
+        <div class="container-fluid">
+            <section class="row description">
+                <div class="col-md-3 col-lg-2">
+                    <h3>Description</h3>
+                </div>
+                <div class="col-md-9 col-lg-10">
+                    <div class="remarks">{{property.remarks}}<br /><i>{{property.brokername}}</i></div>
+                </div>
+            </section>
+            <section class="features">
+                <h3>Interior Features</h3>
+                <div class="row">
+                    <div class="col-xs-6 feature" ng-repeat="feature in property.interiorfeatures">
+                        <p><label>{{feature.name}}:</label> <span>{{feature.value}}</span></p>
+                    </div>
+                </div>
+            </section>
+            <section class="features">
+                <h3>Exterior Features</h3>
+                <div class="row">
+                    <div class="col-xs-6 feature" ng-repeat="feature in property.exteriorfeatures">
+                        <p><label>{{feature.name}}:</label> <span>{{feature.value}}</span></p>
+                    </div>
+                </div>
+            </section>
+            <section class="features">
+                <h3>Property Features</h3>
+                <div class="row">
+                    <div class="col-xs-6 feature" ng-repeat="feature in property.propertyfeatures">
+                        <p><label>{{feature.name}}:</label> <span>{{feature.value}}</span></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="specification-amenities amenities-popup">
+        <!--        <div class="content-amenites">
+                    <h3 class="specification-title">Amenities</h3>
+                    <div class="list-amenites">
+                        <div class="amenities-item">
+                            <p>Air Conditioning</p>
+                            <p>Cloth Washe/Dryer</p>
+                        </div>
+                        <div class="amenities-item">
+                            <p>Fridge/Stove</p>
+                            <p>Heat Recov. Vent</p>
+                        </div>
+                        <div class="amenities-item">
+                            <p>Oven-Built In</p>
+                            <p>Security System</p>
+                        </div>
+                        <div class="amenities-item">
+                            <p>Vacuum Blt. In</p>
+                            <p>Vacuum Blt.</p>
+                        </div>
+                    </div>
+                </div>-->
+        <div class="media-amenities">
+            <h3 class="specification-title" align="center" >Property Video and Virtual Tour</h3>
+            <div class="list-media-amenities">
+                <div class="media-amenities-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vkCsr82uGBU" frameborder="0" allowfullscreen></iframe>
+					<!-- <img src="images/hartcourts/media-amenities_01.jpg" alt="media amenities"> -->
+                </div>
+                <div class="media-amenities-item">
+                    <iframe src="https://my.matterport.com/show/?m=QrZBo8WX867"> <!--content--> </iframe>
+					<!-- <img src="images/hartcourts/media-amenities_02.jpg" alt="media amenities"> -->
+                </div>
+            </div>
+             <div class="media-amenities-desc">
+                <img src="images/hartcourts/logo-menities.jpg" alt="logo menities" class="amenities-desc-img">
+                <div class="desc">
+                    <p>
+The data relating to real estate on this website comes in part from the MLS@reg; Reciprocity program of either the Real Estate Board of Greater Vancouver (REBGV), the Fraser Valley Real Estate Board (FVREB) or the Chilliwack and District Real Estate Board (CADREB). Real estate listings held by participating real estate firms are marked with the MLS® logo and detailed information about the listing includes the name of the listing agent. This representation is based in whole or part on data generated by either the REBGV, the FVREB or the CADREB which assumes no responsibility for its accuracy. The materials contained on this page may not be reproduced without the express written consent of either the REBGV, the FVREB or the CADREB.                    </p>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="specification-weather-map weather-map-popup">
+        <div class="map" id="popup_map">
+            <!-- <img ng-src="{{ldt.popupMapUrl(property)}}"> -->
+			<!-- <img src="images/hartcourts/amenities-map.jpg" alt="media amenities"> -->
+        </div>
+        <div class="properties-weather">
+            <img src="images/hartcourts/amenities-weather-bg.png" alt="media amenities">
+            <div class="wrapper-inner">
+                <div class="weather-detail">
+                    <div class="content-head">
+                        <div class="head-weather head-left">
+                            <img class="home-img" src="images/hartcourts/home-3-white.png" alt="media amenities">
+                            <span class="text">Listings</span>
+                        </div>
+                        <div class="head-weather head-right">
+                            <img class="weather-img" src="images/hartcourts/weather-white.png" alt="media amenities">
+                            <span class="text"> 10°C|°F</span>
+                        </div>
+                    </div>
+                    <div class="content-main">
+                        <p class="title-primary">FALSE CREEK LIVING</p>
+                        <p class="sub-title">A model for west coast living</p>
+                        <div class="desc">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt nulla ut velit ornare, et placerat sem sagittis. Vestibulum posuere turpis at vulputate finibus. Duis et lorem tellus. Nulla eget tincidunt turpis. Nullam congue vitae magna sed gravida. Nunc mollis nulla eu lacus pellentesque lacinia. Praesent lacinia posuere velit, id tempus metus efficitur at. Donec cursus purus eu quam mattis, non pretium velit ultrices. Cras posuere nibh ut luctus auctor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt nulla ut velit ornare
+                            </p>
+                        </div>
+                        <button type="button" title="View Community" class="btn btn-request">View Community</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-relevant-listing relevant-listing-popup">
+        <h3 class="listing-title">Relevant Listings</h3>
+
+        <!--        <div class="relevant-listing">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="relevant-item">
+                                <img src="images/hartcourts/img-relevant.jpg" alt="overview" class="img-relevant">
+                                <div class="wrap-relevant top">
+                                    <div class="left">
+                                        <span class="relevant-label label-sale">for sale</span>
+                                        <span class="relevant-label label-new">new listing</span>
+                                    </div>
+                                    <div class="right">
+                                        <button type="button" class="btn btn-upto"></button>
+                                    </div>
+                                </div>
+                                <div class="wrap-relevant bottom">
+                                    <div class="relevant-info">
+                                        <div class="info-item">
+                                            <div class="price">
+                                                <span>$669,000</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-item">
+                                            <div class="address-relevant street">
+                                                <span class="ico ico-home"></span>
+                                                <span class="text">70 Washington Street, Unit 7S</span>
+                                            </div>
+                                            <div class="address-relevant number">
+                                                <span>1 bd</span>
+                                                <span>2 ba</span>
+                                                <span>~913 sf</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="status-info">
+                                                <span class="open">
+                                                    <img src="images/hartcourts/address-white.png">
+                                                    <span class="text relevant-label label-open">open house</span>
+                                                </span>
+                                            </span>
+                                            <span class="date-time">Sun. 12-4 . 2 Paseo Acebo, Rancho Santa Mar..</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="relevant-item">
+                                <img src="images/hartcourts/img-relevant.jpg" alt="overview" class="img-relevant">
+                                <div class="wrap-relevant top">
+                                    <div class="left">
+                                        <span class="relevant-label label-sale">for sale</span>
+                                        <span class="relevant-label label-new">new listing</span>
+                                    </div>
+                                    <div class="right">
+                                        <button type="button" class="btn btn-upto"></button>
+                                    </div>
+                                </div>
+                                <div class="wrap-relevant bottom">
+                                    <div class="relevant-info">
+                                        <div class="info-item">
+                                            <div class="price">
+                                                <span>$669,000</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-item">
+                                            <div class="address-relevant street">
+                                                <span class="ico ico-home"></span>
+                                                <span class="text">70 Washington Street, Unit 7S</span>
+                                            </div>
+                                            <div class="address-relevant number">
+                                                <span>1 bd</span>
+                                                <span>2 ba</span>
+                                                <span>~913 sf</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="status-info">
+                                                <span class="open">
+                                                    <img src="images/hartcourts/address-white.png">
+                                                    <span class="text relevant-label label-open">open house</span>
+                                                </span>
+                                            </span>
+                                            <span class="date-time">Sun. 12-4 . 2 Paseo Acebo, Rancho Santa Mar..</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="relevant-item">
+                                <img src="images/hartcourts/img-relevant.jpg" alt="overview" class="img-relevant">
+                                <div class="wrap-relevant top">
+                                    <div class="left">
+                                        <span class="relevant-label label-sale">for sale</span>
+                                        <span class="relevant-label label-new">new listing</span>
+                                    </div>
+                                    <div class="right">
+                                        <button type="button" class="btn btn-upto"></button>
+                                    </div>
+                                </div>
+                                <div class="wrap-relevant bottom">
+                                    <div class="relevant-info">
+                                        <div class="info-item">
+                                            <div class="price">
+                                                <span>$669,000</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-item">
+                                            <div class="address-relevant street">
+                                                <span class="ico ico-home"></span>
+                                                <span class="text">70 Washington Street, Unit 7S</span>
+                                            </div>
+                                            <div class="address-relevant number">
+                                                <span>1 bd</span>
+                                                <span>2 ba</span>
+                                                <span>~913 sf</span>
+                                            </div>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="status-info">
+                                                <span class="open">
+                                                    <img src="images/hartcourts/address-white.png">
+                                                    <span class="text relevant-label label-open">open house</span>
+                                                </span>
+                                            </span>
+                                            <span class="date-time">Sun. 12-4 . 2 Paseo Acebo, Rancho Santa Mar..</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+			
+			<section class="gallery">
+                <ul id="modalPropertyCarousel" >
+
+                    <li ng-repeat="property in featuredProperties" modal-property-repeater>
+                        <featured-property-card/>
+                    </li>
+
+                </ul>
+                <!-- <slick settings="propertiesSlider" class="carousel-style-2" init-onload="true">
+                    <featured-property-card ng-repeat="property in featuredProperties"></featured-property-card>
+                </slick> -->
+            </section>
+        <!-- <section class="gallery test">
+            <slick settings="propertiesSlider" class="carousel-style-2" init-onload="true">
+                <featured-property-card ng-repeat="property in featuredProperties"></featured-property-card>
+            </slick>
+        </section> -->
+        <div class="wrapper-btn">
+            <button type="button" title="Request More Info" class="btn btn-view-more">View More Listings</button>
+        </div>
+</listing-details-page>
+

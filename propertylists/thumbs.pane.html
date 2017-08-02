@@ -1,0 +1,8 @@
+<propertylist-list-pane>
+    <section sv-root sv-part="pllc.properties" class="search-results" ng-show="pllc.currentSortOrder.name=='ranking'">
+        <propertylist-thumb-card  sv-element ng-repeat="property in pllc.properties"></propertylist-thumb-card>
+    </section>
+    <section class="search-results" mg-hide="pllc.currentSortOrder.name=='ranking'">
+        <propertylist-thumb-card ng-repeat="property in pllc.properties"></propertylist-thumb-card>
+    </section>
+</propertylist-list-pane>

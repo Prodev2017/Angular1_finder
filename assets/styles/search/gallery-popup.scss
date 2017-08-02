@@ -1,0 +1,24 @@
+.rea-photo-viewer {
+  display: inline-block;
+  z-index: 2000;
+  .header {
+      background-color: black;
+      padding: 1rem;
+      position: relative;
+    .title,
+    .closebutton {
+      font-size: 18px;
+      color: white;
+    }
+    .closebutton {
+      position: absolute;
+      top: 7px;
+      right: 10px;
+      cursor: pointer;
+      transition: color .3s linear;
+      &:hover {
+        color: $red-6;
+      }
+    }
+  }
+}

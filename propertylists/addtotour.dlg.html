@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h3>Add Properties To Tour</h3>
+</div>
+<div class="modal-body" ng-show="!data.adding&&data.tours.mytours.length>0">
+        <label>Tour</label>
+        <select ng-model="data.name" class="form-control" ng-change="data.name=='-1' ? data.adding=true:data.adding=false">
+            <option value="" disabled selected>Select A Tour</option>
+            <option ng-repeat="option in data.tours.mytours" value="{{option.name}}">{{option.name}}</option>
+            <option value="-1">Create New Tour...</option>
+        </select>
+    </div>
+   <div class="row formitem" ng-show="data.adding||data.tours.mytours.length==0">
+       <h4>Create New Tour</h4>
+       <label>Tour Name</label><input type="text" class="form-control" ng-model="data.newname">
+   </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

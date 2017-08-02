@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3>Attach A Property Search</h3>
+</div>
+<div class="modal-body">
+    <p>Choose a previously saved property search in the drop down bellow:</p>
+    <div class="form-group">
+        <select ng-model="data.name" class="form-control">
+            <option value="" disabled selected>Select Property Search</option>
+            <option ng-repeat="search in data.searches" value="{{search}}">{{search}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Message</label>
+        <textarea ng-model="data.body" class="form-control" rows="5"></textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">Send</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

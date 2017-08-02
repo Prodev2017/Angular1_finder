@@ -1,0 +1,403 @@
+.col-xlg-6 {
+	@media(min-width: 1600px) {
+		width: 50%;
+		float: left;
+	}
+}
+
+.popup-user {
+	.modal-dialog {
+		width: 100%;
+		margin: 0 auto;
+	}
+}
+
+.wrapper-signup {
+	position: relative;
+	
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-top: 2px solid $red-2;
+	width: 100%;
+	min-height: 100vh;
+	@media(max-width: 1599px) {
+		padding: 0;
+	}
+	&.-forgot {
+		.sign-forgot {
+			text-align: center;
+			.btn {
+				display: inline-block;
+			}
+		}
+	}
+	.wrapper-content {
+		z-index:2;
+		padding: 50px 80px;
+		background: rgba(25, 38, 52, 0.8);
+		position: relative;
+		@media(min-width: 1600px) {
+			position: absolute;
+			top: 10%;
+			left: 10%;
+			right: 10%;
+			bottom: 10%;
+		}
+		@media(max-width: 1599px) {
+			max-width: 80%;
+			margin: 0 auto;
+			margin-top:5%;
+		}
+		@media(max-width: 991px) {
+			padding: 30px 25px;
+		}
+		@media(max-width: 767px) {
+			max-width: 90%;
+		}
+	}
+	.logo {
+		margin-top: 0;
+		margin-bottom: 3rem;
+		text-align: center;
+	}
+	.logo-link {
+		overflow: hidden;
+		.img-logo {
+			transition: transform .3s ease-out;
+		}
+		&:hover {
+			.img-logo {
+				transform: scale(1.2);
+			}
+		}
+	}
+	.form-title {
+		font-size: 3.2rem;
+		font-family: 'ProximaNova';
+		color: $white;
+		margin-bottom: 2rem;
+		line-height: 1;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	.btn-close-sign {
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		right: 0;
+		max-width: 65px;
+		@media(max-width: 767px) {
+			max-width: 35px;
+		}
+	}
+	.licence {
+		font-size: 1.8rem;
+		color: $white;
+		text-align: center;
+		margin-top: 30px;
+		@media(min-width: 1600px) {
+			position: absolute;
+			bottom: 6rem;
+			left: 0;
+			right: 0;
+			margin-top: 0;
+		}
+		a {
+			color: $red-2;
+			transition: color .3s ease-out;
+			cursor: pointer;
+			&:hover {
+				color: $white;
+			}
+		}
+		@media (max-width: 767px) {
+			font-size: 1.6rem;
+		}
+		@media (max-width: 479px) {
+			font-size: 1.5rem;
+		}
+	}
+	.btn {
+		padding-top: 25px;
+		padding-bottom: 25px;
+		font-size: 1.6rem;
+		color: $white;
+		transition: all .3s ease-out;
+	}
+	.btn-link {
+		width: auto !important;
+	}
+	.btn-default {
+		background-color: #b82b27;
+		width: auto !important;
+		border-radius: 0;
+		border-color: #b82b27;
+		text-transform: uppercase;
+		padding:1rem 5rem;
+		&:hover {
+			background-color: darken(#b82b27, 10%);
+			border-color: darken(#b82b27, 10%);
+		}
+	}
+	.sign-forgot{
+		text-align: center;
+	}
+	.btn-link {
+		text-align: right;
+		float: right;
+		padding-right: 0;
+	}
+	.btn-close-sign,
+	.btn-social {
+		display: block;
+		transition: all .3s ease-out;
+		&:hover {
+			opacity: .8;
+		}
+	}
+	.short-desc {
+		text-align: center;
+		color: white;
+		margin-bottom: 4rem;
+	}
+	
+	.modal-bg{
+		position:absolute;
+		top:0;
+		bottom:0;
+		height:110% !important;
+		width:100%;
+	}
+}
+
+.signup-form {
+	position: relative;
+	&.form-login {
+		margin-top: 50px;
+		.form-social {
+			margin-top: 0;
+		}
+	}
+	.form-item {
+		margin-bottom: 2.5rem;
+		@media (max-width: 767px) {
+			margin-bottom: 2rem;
+		}
+		.wrapp-input {
+			position: relative;
+			input[type=number]::-webkit-inner-spin-button,
+			input[type=number]::-webkit-outer-spin-button {
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					margin: 0;
+				
+			}
+			
+		}
+		.icon {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 5.2rem;
+			height: 4.8rem;
+			background-repeat: no-repeat;
+			background-size: 3rem;
+			background-position: center center;
+			@media (max-width: 320px) {
+				width: 4rem;
+				background-size: 2.5rem;
+				padding-top: 3rem;
+			}
+			&.icon-email {
+				background-image: url(images/hartcourts/icon-form-email.png);
+				background-size: 4rem 3rem;
+				@media (max-width: 320px) {
+					background-size: 3rem 2rem;
+				}
+			}
+			&.icon-phone {
+				background-image: url(images/hartcourts/icon-phone.png);
+			}
+			&.icon-password {
+				background-image: url(images/hartcourts/icon-form-password.png);
+			}
+			&.icon-user {
+				background-image: url(images/hartcourts/icon-form-user.png);
+			}
+		}
+		.form-control {
+			border: 0;
+			border-radius: 0;
+			border-bottom: 1px solid $white;
+			padding: 2.4rem 1rem 2.4rem 6.2rem;
+			color: $white;
+			font-size: 1.9rem;
+			line-height: 1;
+			background-color: transparent;
+			outline: 0;
+			width:100% !important;
+			&:focus {
+				box-shadow: none;
+			}
+			@media (max-width: 479px) {
+				font-size: 1.5rem;
+			}
+		}
+		.help-text {
+			display: none;
+			margin-top: 1.5rem;
+			width: 100%;
+			color: $white;
+			font-size: 1.8rem;
+			line-height: 1;
+			font-weight: 600;
+			text-align: center;
+			opacity: 0;
+			transition: opacity .3s ease-out;
+			&.success,
+			&.error {
+				display: block;
+				opacity: 1;
+			}
+			&.error {
+				color: $color-error;
+			}
+			&.success {
+				color: $color-success;
+			}
+		}
+	}
+	.sign-forgot {
+		padding-top: 10px;
+		overflow: hidden;
+		&.login {
+			@media(min-width: 1600px) {
+				padding-right: 205px;
+				position: relative;
+			}
+		}
+		>a {
+			padding: 10px 0;
+			@media(min-width: 1600px) {
+				padding: 10px 20px;
+				position: absolute;
+				top: calc(50% + 5px);
+				right: 0;
+				transform: translate(0, -50%);
+			}
+			@media(max-width: 767px) {
+				display: block;
+				float: none;
+				text-align: center;
+			}
+		}
+	}
+	.form-type {
+		padding-right: 5rem;
+		@media(max-width: 767px) {
+			padding-right: 15px;
+		}
+	}
+	.form-foot {
+		padding-top: 4em;
+	}
+	.form-policy{
+	
+		padding-left:5rem;
+		@media(max-width: 767px) {
+			padding-left: 15px;
+		}
+		h4{
+			color:white;
+		}
+		.register-purpose{
+			color:white;
+			div &.col-md-6{
+				padding:0;
+				color:white;
+						
+			}
+		}
+		.policy-container{
+			color: white;
+			div {
+				input {
+					position: absolute;
+				}
+				label {
+					display: inline-block;
+					padding-left: 1.4em;
+				}
+			}
+		}
+	}
+	
+	.form-social {
+		padding-left: 5rem;
+		margin-top: 30px;
+		@media(max-width: 767px) {
+			padding-left: 15px;
+		}
+		.form-item {
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.line-or {
+			color: white;
+			position: relative;
+			@media(min-width: 768px) {
+				position: absolute;
+				top: 0;
+				left: -5px;
+				bottom: 0;
+			}
+			@media(max-width: 767px) {
+				min-height: 1px;
+				display: block;
+				margin: 20px 0 35px;
+				clear: both;
+			}
+			span {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translate(0, -50%);
+				@media(max-width: 767px) {
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				width: 1px;
+				left: 5px;
+				background-color: $gray-24;
+			}
+			&:before {
+				top: 0;
+				bottom: 60%;
+				@media(max-width: 767px) {
+					top: 0;
+					left: 0;
+					width: 40%;
+					height: 1px;
+				}
+			}
+			&:after {
+				top: 60%;
+				bottom: 0;
+				@media(max-width: 767px) {
+					top: 0;
+					left: auto;
+					right: 0;
+					width: 40%;
+					height: 1px;
+				}
+			}
+		}
+	}
+}

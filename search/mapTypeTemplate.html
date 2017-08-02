@@ -1,0 +1,7 @@
+<ng-template>
+<ul class="mapTypes">
+	<li class="maptype active" onclick="PubSub.publish('map.changeMapType',{type:'roadmap',index:0})">Street Map<span></span></li>
+	<li class="maptype" onclick="PubSub.publish('map.changeMapType',{type:'satellite',index:1})">Satelite<span></span></li>
+	<li class="maptype" onclick="PubSub.publish('map.changeMapType',{type:'hybrid',index:2})">Hybrid<span></span></li>
+</ul>
+</ng-template>

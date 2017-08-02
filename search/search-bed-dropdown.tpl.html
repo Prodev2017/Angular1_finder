@@ -1,0 +1,20 @@
+<div class="criteria">
+    <div class="left-col">
+        <section>
+            <div class="criteria-item">
+                <div class="dual-field">
+                    <select name="min-beds" ng-model="sbc.controlValues.minbeds" class="search-criteria search-select" ng-change="sbc.searchBed()">
+                        <option ng-repeat="option in sbc.controls.minbeds"  ng-value="option.value">{{option.name}}</option>
+                    </select>
+                    &nbsp;-&nbsp;
+                    <select name="max-beds" ng-model="sbc.controlValues.maxbeds" class="search-criteria search-select" ng-change="sbc.searchBed()">
+                        <option ng-repeat="option in sbc.controls.maxbeds"  ng-value="option.value">{{option.name}}</option>
+                    </select>
+
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="right-col">
+    </div>
+</div>

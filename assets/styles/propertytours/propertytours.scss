@@ -1,0 +1,635 @@
+@mixin scrollbar {
+    &::-webkit-scrollbar-track {
+        background-color: #cdd6dc;
+        border-radius: 1px;
+    }
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 3px;
+        background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        background: $themeColor;
+    }
+}
+
+.pac-container {
+    z-index: 1200 !important;
+}
+
+property-tour-pane {
+    width: 100%;
+    select, select.form-control, input[type=text]{
+        height: 34px;
+        border-color: #ddd;
+    }
+	
+	.input-group{
+		width:95%;
+		float:left;
+		@media(max-width: 992px) {
+			width:90%;
+		}
+	}
+	
+	.reala-form-col-filter-listing{
+		@media(max-width: 992px) {
+			width:10%;
+			display:inline-block;
+		}
+	}
+    .toolbar {
+        display: block;
+        padding: 10px;
+        box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+        -moZ-box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+        -webkit-box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+        .tour-selector{
+            position: relative;
+            .form-control{
+                height: 40px;
+                appearance: none;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+            }
+            .btn-caret{
+                top: 7px;
+                left: auto;
+                right: 95px;
+                cursor: pointer;
+                z-index: 9999;
+                font-size: 24px;
+                position: absolute;
+                line-height: 24px;
+            }
+            .btn-tour{
+                color: $white;
+                height: 40px;
+                cursor: pointer;
+                border-color: $red-10;
+                background-color: $red-10;
+            }
+        }
+
+    }
+
+    .properties {
+        border: 1px solid $gray-14;
+        margin: 0 auto 30px;
+        padding: 30px 15px 0;
+        max-width: 740px;
+        margin-top: 45px;
+        border-radius: 10px;
+        background-color: #f7f7f7;
+        .location {
+            position: relative;
+            margin-bottom: 15px;
+            padding-left: 180px;
+            label{
+                left: 0;
+                position: absolute;
+                font-size: 16px;
+                img{
+                    width: 30px;
+                    margin-right: 5px;
+                }
+            }
+            input {
+                height: 25px;
+                font-size: 16px;
+                border-radius: 3px;
+            }
+        }
+    }
+
+
+
+}
+
+
+property-tour-card {
+  background-color:white;
+  display: block;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+  .property-header {
+
+      padding: 10px;
+      position: relative;
+      min-height: 40px;
+      .letter-wrapper{
+		  vertical-align:middle;
+          display: inline-block;
+          margin-right: 10px;
+          color: $red-2;
+          font-size: 50px;
+          line-height: 1;
+          font-family: "ProximaNova-Semibold",sans-serif;
+      }
+      .card-title{
+		  vertical-align:middle;
+          display: inline-block;
+          &:before, &:after{
+              content: "";
+              display: table;
+              clear: both;
+          }
+      }
+      .address {
+          color: #696969;
+          display: block;
+          font-size: 23px;
+      }
+      .distance {
+          color: #81c784;
+          display: block!important;
+          font-size: 18px;
+          
+      }
+      button {
+          float: right;
+          color: $white;
+		  border-radius:1px;
+          border-color: $red-2;
+          text-transform: uppercase;
+          background-color: $red-2;
+          &:focus{
+              border-color: $red-2;
+              background-color: $red-2;
+          }
+      }
+  }
+
+  .property-container {
+      
+      &:before, &:after{
+          content: " ";
+          display: table;
+          clear: both;
+      }
+      .property-map {
+          width: 40%;
+		  height:24rem;
+          float: left;
+          cursor: pointer;
+          img{
+              width: 100%;
+			  height:100%;
+          }
+          .map {
+
+          }
+      }
+  .property-photo {
+      width: 60%;
+	  height:24rem;
+      float: left;
+      cursor: pointer;
+      position: relative;
+      border:none;
+	  border-radius: 0;
+      img {
+          max-width: 100%;
+		  
+      }
+      .photo-top {
+          display: table;
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 100;
+          margin-top: 5px;
+          margin-left: 5px;
+          width: 100%;
+		  
+		  .recheckbox {
+
+			  display:inline-block;
+			  float:left;
+
+			  label {
+
+				font-size:1.5em;
+			  }
+
+			  label:after {
+
+				content: '';
+				display: table;
+				clear: both;
+			  }
+
+			  .cr {
+
+				position: relative;
+				display: inline-block;
+				border: 0;
+				background-color:rgb(51, 122, 183);
+				float: left;
+				margin: 10px 5px 0 5px;
+				margin-right: .5em;
+				cursor:pointer;
+				height: 20px;
+				width: 20px;
+				background: $red-2;
+				box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3) inset;
+				border-radius: 3px;
+				
+			  }
+
+			  .cr .cr-icon {
+
+				position: absolute;
+				font-size: .8em;
+				color:white;
+				line-height: 0;
+				top: 50%;
+				left: 15%;
+				opacity:1.0;
+			  }
+
+			  label input[type="checkbox"] {
+
+				display: none;
+			  }
+
+			  label input[type="checkbox"] + .cr > .cr-icon {
+
+				transform: scale(3) rotateZ(-20deg);
+				opacity: 0;
+				transition: all .3s ease-in;
+			  }
+
+			  label input[type="checkbox"]:checked + .cr > .cr-icon {
+
+				transform: scale(1) rotateZ(0deg);
+				opacity: 1;
+				margin-left:-1px;
+			  }
+
+			  label input[type="checkbox"]:disabled + .cr {
+
+				opacity: .5;
+			  }
+			}
+		  
+          .sc {
+			  height:20px;
+			  margin-top:10px;
+			  display: inline-block;
+			  float: left;
+			  background-color: #f47742;
+			  padding: 2px 6px;
+			  margin-right: 4px;
+			  color: white;
+			}
+			
+			.list-buttons{
+				margin-top:0px;
+				i{
+					width:25px;
+					height:25px;
+					
+					img{
+						width:20px;
+						height:20px;
+					}
+				}
+			}
+          .bb {
+              align-self: flex-end;
+              text-align: right;
+              color: white;
+              font-size: 1.6rem;
+          }
+          .buttons {
+
+              display: inline-block;
+              float: right;
+              margin-right: 18px;
+              margin-top: -4px;
+              color: white;
+              font-size: 32px;
+
+              span:before {
+
+                  background: transparent;
+              }
+
+              i {
+
+                  cursor: pointer;
+                  opacity: .8;
+                  font-size: 20px;
+              }
+
+              i:hover {
+
+                  opacity: 1.0;
+              }
+          }
+      }
+
+        /*.photo-bottom {
+            display: table;
+            left: 0;
+            position: absolute;
+            bottom: 20px;
+            z-index: 100;
+            
+            width: 100%;
+            font-size: 18px;
+            font-family: "ProximaNova-Light",sans-serif;
+            .info-card{
+				.property-type{
+					@media(max-width: 479px) {
+						font-size:1rem !important;
+					}
+					img{
+						@media(max-width: 479px) {
+							width: auto!important;
+							height: 24px!important;
+						}
+					}
+				}
+				.bb-search{
+					.bb-item{
+						@media(max-width: 479px) {
+								font-size:0.7rem !important;
+						}
+						span{
+							@media(max-width: 479px) {
+								font-size:0.7rem !important;
+							}
+						}
+					}
+				}
+			}
+			article {
+
+                width: 100%;
+            }
+        }*/
+
+        .type {
+
+            color: white;
+            font-size: 14px;
+        }
+
+        .list-price {
+
+            display: inline-block;
+            color: white;
+        }
+        .bb {
+            float: right;
+            color: white;
+            margin-right: 10px;
+            text-transform: uppercase;
+            label {
+                padding-left: 4px;
+                opacity: .8;
+                margin-right: 4px;
+            }
+        }
+        .info-more{
+            border-radius: 0;
+            
+        }
+
+        .address {
+
+            display: inline-block;
+            float: left;
+            font-size: 14px;
+            font-weight: normal;
+            color: white;
+        }
+
+        .cs {
+
+            display: inline-block;
+            font-size: 14px;
+            color: white;
+            font-weight: normal;
+            margin-right: 10px;
+			@media(max-width: 479px) {
+				display:block;
+				margin-top:10px;
+			}
+
+        }
+    }
+
+    .extended {
+		background-color: #181f26;
+        position:relative;
+		width:100%;
+		height: 200px;
+		padding:10px;
+        margin-top: 10px;
+        overflow-y: scroll;
+		overflow-x:hidden;
+		@include scrollbar;
+
+        hr {
+
+            width: 90%;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            border: 1px solid #dddddd;
+        }
+
+        .properties {
+
+            margin-left: 6px;
+            margin-right: 6px;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 13px;
+
+            label {
+
+                display: inline-block;
+                float: left;
+            }
+
+            .value {
+
+                display: inline-block;
+                float: right;
+            }
+        }
+
+        .remarks {
+
+            margin-bottom:40px;
+            line-height: 16px;
+            font-size: 12px;
+            color: #000000;
+
+            .title {
+
+                font-weight: 700;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                color: #555555;
+            }
+        }
+
+        .add-remarks {
+
+            
+            line-height: 16px;
+            font-size: 12px;
+
+            .title {
+
+                    font-weight: 700;
+					margin-top: 15px;
+					margin-bottom: 15px;
+					color: #ffffff;
+					cursor: pointer;
+				
+            }
+        }
+
+        .adding-remarks {
+
+           
+            line-height: 16px;
+            font-size: 12px;
+
+            .title {
+
+                font-weight: 700;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                color: #555555;
+            }
+
+            input[type="text"] {
+              width: 80%;
+			  color:#f33536;
+            }
+			
+			input[type="text"]::placeholder {
+             color:#f33536;
+            }
+
+            button {
+			  display:inline-block;
+			  margin: 0px;
+			  vertical-align:middle;
+			  height:30px;
+			  width:20%;
+			  border-radius:0;
+			  font-size:14px;
+			  background-color:#f33536 !important;
+			  border:none;
+			  
+			   img{
+				width:20%;
+				margin-right:6px;
+			   }
+			}
+        }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+	property-tour-card{
+		.property-header{
+			.letter-wrapper{
+				font-size:4rem;
+			}
+			.card-title{
+				.address{
+					font-size:1.5rem;
+					width:74%;
+				}
+				.distance{
+					font-size:1rem;
+				}
+			}
+			button{
+				font-size:1rem;
+				position:absolute;
+				top:10px;
+				right:10px;
+			}
+		}
+		.property-container{
+			.property-map{
+				width:100%;
+				clear:both;
+				height:15rem;
+			}
+			.property-photo{
+				width:100%;
+				clear:both;
+				.property-inner{
+					position:absolute;
+					height:100%;
+					.property-img-container{
+						height:100%;
+						img{
+							width: 112%;
+							height: 116%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 375px) {
+	.property-container{
+		.property-photo{
+			height:20rem;
+			.property-inner{
+				.photo-bottom{
+					.info-card{
+						line-height: 1.3;
+						&.left {
+							.list-price {
+								font-size: 1.5rem;
+							}
+							.address {
+								font-size: 0.9rem;
+							}
+							.cs {
+								font-size: 0.7rem;
+							}
+						}
+						&.right {
+							.property-type {
+								font-size: 1rem;
+								.type-img-container {
+									top: -10px;
+									img {
+										width: 20px;
+										height: 15px !important;
+									}
+								}
+							}
+							.bb-search {
+								font-size: 1rem;
+								.bb-item {
+									font-size: 1rem;
+									span {
+										font-size: 1rem;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

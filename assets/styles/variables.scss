@@ -1,0 +1,179 @@
+$icomoon-font-path: "../fonts" !default;
+
+$ico-average: "\e90a";
+$ico-login: "\e90b";
+$ico-lot-size-new: "\e90c";
+$ico-double-beds: "\e90d";
+$ico-house-telephone: "\e90e";
+$ico-bed-2: "\e900";
+$ico-home: "\e901";
+$ico-office: "\e903";
+$ico-folder-open: "\e930";
+$ico-folder-upload: "\e934";
+$ico-phone: "\e942";
+$ico-location2: "\e948";
+$ico-map2: "\e94c";
+$ico-bubbles: "\e96c";
+$ico-cog: "\e994";
+$ico-target: "\e9b3";
+$ico-attachment: "\e9cd";
+$ico-smile: "\e9e1";
+$ico-sort-amount-asc: "\ea4c";
+$ico-sort-amount-desc: "\ea4d";
+$ico-share2: "\ea82";
+$ico-area: "\e902";
+$ico-bathroom: "\e904";
+$ico-dollar: "\e905";
+$ico-expand: "\e906";
+$ico-fullscreen: "\e907";
+$ico-home2: "\e908";
+$ico-save-to-folder: "\e909";
+
+$gray: #b0b0b0;
+$gray-1: #e6e6e6;
+$gray-2: #5d5d5d;
+$gray-3: #676767;
+$gray-4: #262626;
+$gray-5: #d0d2d2;
+$gray-6: #a6acb3;
+$gray-7: #5a5d62;
+$gray-8: #979797;
+$gray-9: #847c7c;
+$gray-10: #585858;
+$gray-11: #ddd;
+$gray-12: #efefef;
+$gray-13: #eaebf0;
+$gray-14: #b7b7b7;
+$gray-15: #f0f0f0;
+$light-gray: #838d9a;
+$gray-16: #eee;
+$gray-17: #dadada;
+$gray-18: #717171;
+$gray-19: #f2f2f2;
+$gray-20: #656565;
+$gray-21: #838383;
+$gray-22: #f5f6f7;
+$gray-23: #848484;
+$gray-24: #73787f;
+$dark-red: #390002;
+$dark-red-2: #992020;
+$dark-red-3: #992020;
+$red: #f33536;
+$red-1: #390002;
+$red-2: #f33536;
+$red-3: #390002;
+$red-4: #f33536;
+$red-5: #f33536;
+$red-6: #f33536;
+$red-7: #60798b;
+$red-8: #992020;
+$red-9: #f33536;
+$red-10: #f33536;
+$red-11: #f33536;
+$red-12: #f33536;
+
+$white: #fff;
+$white-1: #fefefe;
+$white-2: #f5f5f5;
+$white-3: #f4f5f9;
+$white-4: #f9f9f9;
+
+$black: #000;
+$black-1: #171717;
+$black-2: #1a1a1a;
+$black-3: #45494e;
+$black-4: #3d3d3d;
+
+$grey: #b4c1ca;
+$grey-2: #d2d2d2;
+
+$orange: #ff9600;
+$dark-orange: #723003;
+
+$border-color: #575e67;
+$border-blue: #0fb3f0;
+$border-gray: #9b9b9b;
+$border-blue-1: #00a9da;
+$dark-red: #1183b1;
+$bg-blue: #15191d;
+$bg-grey: #f2f4f4;
+
+
+//color
+$baseColor: #333333;
+$red: #f33536;
+$red-light: #1e435e;
+$redDark: #ec1c24;
+$redDarker: #390002;
+$themeColor: $red;
+$red: #ed1c24;
+$redDark: #b82b27;
+$black: #131414;
+$white: #eaeaea;
+$white-light: #fbfbfb;
+$grey: #969292;
+$grey-dark: #858686;
+$grey-light: #f2f0f0;
+$yellow: #ff9600;
+$green: #6ad324;
+
+//size
+$baseSize: 18px;
+
+//radius
+$borderRadius: 7px;
+
+//bg
+$inputBg: #1d2229;
+$inputBorder: $red;
+
+//border
+$borderColor: #e5e5e4;
+$borderColor2: #8b8b8b;
+
+//social
+$colorSocial: #525765;
+
+//footer
+$linkColor-1: #2f3442;
+$linkColor-2: #001a42;
+
+//search
+$borderSearch: #e0e0e0;
+
+//Ken Burns effect
+$items: 4;
+$animation-time: 4s;
+$transition-time: .5s;
+$scale: 20%;
+
+$total-time: ($animation-time * $items);
+$scale-base-1: (1 + $scale / 100%);
+
+
+
+$color-error: #d9534f;
+$color-success: #5cb85c;
+
+$font-cormorant-light-italic: 'Cormorant-LightItalic';
+$font-cormorant-bold-italic: 'Cormorant-BoldItalic';
+$font-cormorant-medium: 'Cormorant-Medium';
+$font-proximanova-bold: 'ProximaNova-Semibold';
+$font-proximanova-light: 'ProximaNova-Light';
+$font-proximanova-extrabold: 'ProximaNova-Extrabold';
+$font-awesone: 'FontAwesome';
+
+@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Opera 12
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+}
+
+@mixin transition($transition){
+    transition: $transition;
+    -moz-transition: $transition;
+    -webkit-transition: $transition;
+    -o-transition: $transition;
+}

@@ -1,0 +1,167 @@
+<div draggable=false>
+    <div class="property-photo" ng-click="plc.ShowDetails(property)" hover-image-effect="property-bg">
+        <div class="property-inner">
+
+			<div class="property-img-container" >
+				<img draggable=false ng-src="{{property.firstphotourl}}"  ng-click="$event.stopPropagation()" class="property-bg">
+			</div>
+
+			<section class="photo-top">
+
+				<div ng-if="plc.currentList!='All Properties'" ng-click="$event.stopPropagation()" class="recheckbox">
+					<label>
+						<input type="checkbox" value="" id="{{'rea_propertylist_item_'+property.id}}">
+						<span class="cr"><i class="cr-icon fa fa-check"></i></span>
+					</label>
+				</div>
+
+				<div class="sc" ng-repeat="cond in property.specialconditions track by $index"><span>{{cond}}</span></div>
+				
+				<div class="list-buttons" ng-click="$event.stopPropagation()">
+
+					<i data-toggle="tooltip" title="View Photos" ng-show="false" ng-click="$event.stopPropagation();plc.ViewPhotos(property);" class="ng-hide">
+						<img src="images/icon-viewphoto.png">
+					</i>
+
+					<i data-toggle="tooltip" title="View Photos" ng-mousedown="$event.stopPropagation();plc.ViewPhotos(property);">
+
+						<img src="images/cardicons/photos.svg">
+					</i>                
+					
+					<i data-toggle="tooltip" title="Request Info" ng-mousedown="$event.stopPropagation();plc.RequestInfo(property);"  ng-touch="$event.stopPropagation();plc.RequestInfo(property);">
+						<img src="images/cardicons/info.svg" >
+					</i>
+
+					<div class="btn-group" uib-dropdown style="margin-top:-10px;margin-right:4px;">
+						<img src="images/icon-menu.png" width="20" uib-dropdown-toggle>
+						<ul class="dropdown-menu-right rea-dropdown"  uib-dropdown-menu role="menu" aria-labelledby="single-button" ng-click="$event.stopPropagation();">
+							<li role="menuitem" ng-click="plc.RequestInfo(property)">Request Info</li>
+							<li role="menuitem" ng-click="plc.AddToList(property)" ng-show="plc.propertyListCount>1">Add To List</li>
+							<li role="menuitem" ng-click="plc.AddToTour(property)">Add to Tour</li>
+							<li ng-if="plc.currentList!='All Properties'" role="menuitem" ng-click="plc.RemoveProperties(property)">Remove</li>
+						</ul>
+					</div>
+
+					<!--<i data-toggle="tooltip" class="user-dropdown fancy-dropdown"  title="Request Info" >
+
+						<img src="images/icon-menu.png" ng-click="$event.stopPropagation();plc.ExpandDropdown($index);">
+					</i>  -->
+
+				</div>
+				
+				<!-- <div class="buttons" ng-click="$event.stopPropagation()">
+				   
+				   <i class="fa fa-globe" data-toggle="tooltip" title="Show on Map" ng-show="plc.currentView=='maplist'" ng-click="showOnMap(property);$event.stopPropagation();"></i>
+					<div class="btn-group" uib-dropdown  is-open="status.isopen">
+						<i class="fa fa-ellipsis-v" uib-dropdown-toggle></i>
+						<ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu  role="menu" aria-labelledby="single-button">
+							<li role="menuitem" ng-click="plc.RequestInfo(property)">Request Info</li>
+							<li role="menuitem" ng-click="plc.AddToList(property)" ng-show="plc.propertyListCount>1">Add To List</li>
+							<li role="menuitem" ng-click="plc.AddToTour(property)">Add to Tour</li>
+							<li ng-if="plc.currentList!='All Properties'" role="menuitem" ng-click="plc.RemoveProperties(property)">Remove</li>
+						</ul>
+					</div>
+				</div> -->
+			</section>
+
+			<section class="photo-bottom">
+				<article>
+					<div class="info-card left">
+						<div class="list-price">${{property.listprice}}</div>   
+						<div class="address">{{property.streetaddress}}</div>
+						<div class="cs">
+							<span>{{property.city}}, {{property.stateprovince}} {{property.postalcode}}</span>
+						</div>
+					</div>
+					<div class="info-card right">
+						<div class="property-type ng-binding">                                                
+							{{property.propertytype}}
+							<div class="type-img-container">
+								<img class="{{property.propertytype.toLowerCase()}}">
+							</div>
+							
+						</div>
+						<div class="bb-search">
+							<div class="bb-item">{{property.beds}} <span>Beds</span></div>
+							<div class="bb-item">{{property.baths}} <span>Baths</span></div>
+							<div class="bb-item">{{property.sqft | nanumber}} <span>Sq. Ft.</span></div>
+						</div>
+					</div>
+					
+					<!--
+					<div class="line">
+						<div class="list-price">{{property.listprice | currency:'$':0}}</div>                    
+						<div class="property-type">                                                
+							{{property.propertytype}}
+							<img class="{{property.propertytype.toLowerCase()}}">
+						</div>
+						<!-- <div class="property-type-text">{{property.propertytype}}</div> -->
+						<!--
+					</div>
+					<div class="address">{{property.address}}</div>
+					<div class="line">
+						<div class="cs">
+							<span>{{property.city}}, {{property.state}} {{property.postalcode}}</span>
+						</div>
+						<div class="bb-search">
+							{{property.beds}} BD | {{property.baths}} BA | {{property.sqft}} SF
+						</div>
+
+					</div>
+					-->
+
+				</article>
+			</section>
+			<section class="info-more" ng-click="$event.stopPropagation();" ng-init="showdetails=plc.showExtended">
+				<div class="info-more-col">Days : <span>{{property.dom}}</span></div>
+				<div class="info-more-col">Fees : <span>{{property.ppsqft | nacurrency}}</span></div>
+				<div class="info-more-col">Year	: <span>{{property.yearbuilt}}</span></div>
+				<div class="info-more-col">MLS® #: <span>{{property.listingid}}</span></div>
+				<div class="info-more-col" 	>
+					<button class="btn btn-link"  ng-click="$event.stopPropagation();showdetails=!showdetails;">details <!-- <i class="fa fa-angle-down" aria-hidden="true"></i>< --></button>
+				</div>
+			</section>
+        </div>
+    </div>
+    <div class="extended active" ng-show="plc.showExtended||showdetails"> <!-- ng-show="plc.showExtended" ng-class="plc.showExtended == true ? 'active' : ''" -->
+        <!-- <div class="properties ">	
+            <div class="row">
+                <div class="col-sm-6"><label>Price/SqFt</label><div class="value">${{property.ppsqft | number:0}}</div></div>
+                <div class="col-sm-6"><label>Lot Size</label><div class="value">{{property.lotsize | number:0}}</div></div>
+            </div>
+        </div>
+        <div class="properties ">
+            <div class="row">
+                <div class="col-sm-6"><label>Days On Market</label><div class="value">{{property.dom}}</div></div>
+                <div class="col-sm-6"><label>Year Built</label><div class="value">{{property.yearbuilt}}</div></div>
+            </div>
+        </div> -->
+        <div class="remarks" ng-show="property.clientcomments.length>0 && !property.addingComment"><div class="title" ng-click="property.addingComment=true" style="color:blue;cursor:pointer">My Comments</div>{{property.clientcomments}}</div>
+        <div class="add-remarks" ng-show="property.clientcomments.length==0 && !property.addingComment"><div class="title" ng-click="property.addingComment=true">Add Comment</div></div>
+        <div class="adding-remarks" ng-show="property.addingComment"><input type="text" placeholder="Comment goes here, add your remarks about this property" ng-model="property.clientcomments"/><button class="btn btn-primary btn-xs" ng-click="property.addingComment=false;plc.UpdateClientComments(property)"><img src="../images/test-136.png"/>Add</button></div>
+        <div class="remarks" ng-show="property.agentcomments.length>0"><div class="title">Agent Comments</div>{{property.agentComments}}</div>
+        <div class="remarks" style="margin-bottom:40px;"><div class="title">Remarks</div>{{property.remarks}} ...</div>
+		
+    </div>
+	<div  ng-show="plc.showExtended||showdetails" style="background: -webkit-linear-gradient(transparent, white 90%);
+                    background: -o-linear-gradient(transparent, white 90%);
+                    background: -moz-linear-gradient(transparent, white 90%);
+                    background: linear-gradient(transparent, white 90%); 
+                    position: sticky; 
+                    width: 97%; 
+                    height: 100px; 
+                    margin-top:-25%;">
+            
+				</div>
+</div>
+
+<ul class="list-group menu">
+	<li class="list-group-item" ng-click="plc.SelectAll()">Select All</li>
+	<li class="list-group-item" ng-click="plc.SelectNone()">Select None</li>
+	<li class="list-group-item" ng-click="plc.RequestInfo()">Request Info</li>
+	<li class="list-group-item" ng-click="plc.AddToList()" ng-show="plc.propertyListCount>1">Add To List</li>
+	<li class="list-group-item" ng-click="plc.AddToTour()">Add to Tour</li>
+	<li class="list-group-item" ng-hide="plc.propertyListName=='All Properties'" ng-click="plc.RemoveProperties()">Remove</li>
+</ul>
+
+

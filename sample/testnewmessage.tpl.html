@@ -1,0 +1,35 @@
+<section class="body">
+    <div>
+        <button class="fa fa-plus" style="padding-top:15px;padding-bottom:15px;" title="Add Attachment" data-placement="top" data-templateUrl="testaddattachment.tpl.html" data-trigger="focus" data-animation="true" bs-popover></button>
+        <textarea rows="2" placeholder="Enter New Message Here..." ng-model="nm.msg.data.body" ng-Change="nm.TextChanged()"></textarea>
+        <span ng-show="nm.showControls">
+            <button class="btn btn-primary btn-sm" ng-click="nm.ClearMessage()">Cancel</button>
+            <button class="btn btn-primary btn-sm" ng-click="nm.AddMessage(vm)">Save</button>
+        </span>
+    </div>
+</section>
+<section class="attachments" ng-show="nm.showAttachments">
+    <article ng-repeat="search in nm.msg.data.propertySearches">
+        <div class="property-search">
+            {{search.name}} <button>Run Search</button>
+        </div>
+    </article>
+    <article ng-repeat="list in nm.msg.data.propertyLists">
+        <div class="property-list">
+            {{list.name}} <button>View Properties</button>
+        </div>
+    </article>
+    <article ng-repeat="file in nm.msg.data.files">
+        <div class="property-search">
+            {{file.name}} <button ng-click="nm.msg.ViewFile(attachment)">Get File</button>
+        </div>
+    </article>
+    <article ng-repeat="photo in nm.msg.data.propertyPhotos">
+        <photocard data-propertyref="{{photo.propertyRef}}" ng-click="nm.msg.DisplayDetails()"></photocard>
+    </article>
+    <article ng-repeat="image in nm.msg.data.images">
+        <img src="{{image}}" style="max-width:200px;max-height:200px">
+    </article>
+</section>
+
+

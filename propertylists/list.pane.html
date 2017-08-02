@@ -1,0 +1,8 @@
+<propertylist-list-pane>
+    <section sv-root sv-part="plc.properties" sv-on-sort="plc.RankingChanged()" class="search-results" ng-show="plc.currentSortOrder=='ranking'">
+        <propertylist-card  sv-element ng-repeat="property in plc.properties"></propertylist-card>
+    </section>
+    <section class="search-results" ng-hide="plc.currentSortOrder=='ranking'">
+        <propertylist-card ng-repeat="property in plc.properties"></propertylist-card>
+    </section>
+</propertylist-list-pane>

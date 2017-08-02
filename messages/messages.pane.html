@@ -1,0 +1,31 @@
+<messages-pane>
+    <section class="messages">
+        <div class="upload-file-progress-bar" ng-show="mpc.isUpload">
+            <p ng-class="{inprogress: mpc.isInUploadProgress, fail: (!mpc.isUploadSuccess && !mpc.isInUploadProgress), success: (mpc.isUploadSuccess && !mpc.isInUploadProgress)}">
+                <span ng-show="mpc.isInUploadProgress">File Uploading</span>
+                <span ng-show="!mpc.isUploadSuccess && !mpc.isInUploadProgress">File Upload Failed</span>
+                <span ng-show="mpc.isUploadSuccess && !mpc.isInUploadProgress">File Upload Success</span>
+            </p>
+        </div>
+        <message
+            ng-repeat="msg in mpc.messageGroups.old"
+            msg="msg"
+            is-last="mpc.messageGroups.today.length > 0 ? false : $last"
+            mpc="mpc"></message>
+        <div class="date-group-separator" ng-if="mpc.messageGroups.today.length > 0">
+            Today
+        </div>
+        <message ng-repeat="msg in mpc.messageGroups.today" msg="msg" is-last="mpc.messageGroups.new > 0 ? false : $last" mpc="mpc"></message>
+        <div class="new-message-separator" ng-if="mpc.messageGroups.new.length > 0">
+            <span class="new-message-text">New message</span>
+        </div>
+        <message ng-repeat="msg in mpc.messageGroups.new" msg="msg" is-last="$last" mpc="mpc"></message>
+
+
+    </section>
+    <section>
+        <new-message></new-message>
+    </section>
+</messages-pane>
+
+<file-viewer-popup></file-viewer-popup>

@@ -1,0 +1,21 @@
+<search-list-pane class="thumb-list">
+    <section class="listing-filter" ng-include="'search/filter.pane.html'"></section>
+    <section class="listing-main">
+        <section class="listing-main-inner">
+            <section class="search-results property-thumb-view">
+                <search-thumb-card ng-repeat="property in slc.properties"></search-thumb-card>
+            </section>
+        </section>
+        <section class="pagination-block">
+            <div paging=""
+                 page="slc.currentPage"
+                 page-size="slc.pageSize"
+                 total="slc.totalListings"
+                 paging-action="slc.DisplayListingsPage(page)"
+                 show-prev-next="true"
+                 show-first-last="true"
+                 ul-class="pagination pagination-sm">
+            </div>
+        </section>
+    </section>
+</search-list-pane>

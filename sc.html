@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HomesOnDisplay</title>
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="app/components/angular-motion.min.css">
+  <link rel="stylesheet" href="app/components/angular-carousel.css">
+  <link rel="stylesheet" href="app/components/sweetalert.css">
+  <link rel="stylesheet" href="app/sct/app.css">
+
+  <script src="app/components/jquery.min.js"></script>
+  <script src="app/components/angular.js"></script>
+  <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+  <script src="https://maps.google.com/maps/api/js?key=AIzaSyDEGrhHf_tIMo-mdc1zCToGN81Zg2UbByI&libraries=places" type="text/javascript"></script>
+  <script src="app/components/sweetalert.min.js"></script>
+  <script src="app/components/angular-aria.min.js"></script>
+  <script src="app/components/angular-animate.min.js"></script>
+  <script src="app/components/angular-sanitize.min.js"></script>
+  <script src="app/components/angular-touch.min.js"></script>
+  <script src="app/components/angular-ui-router.min.js"></script>
+  <script src="app/components/paging.min.js"></script>
+  <script src="app/components/pubsub.js"></script>
+  <script src="app/platform.js"></script>
+  <script src="app/utils.js"></script>
+  <script src="app/domain/sc.mdl.js"></script>
+  <script src="app/modules/scapp.mod.js"></script>
+</head>
+
+<body ng-app="scApp">
+
+  <div class="loading-veil"></div>
+
+  <nav class="navbar navbar-inverse" role="navigation">
+    <ul class="nav navbar-nav">
+      <li><a>Home</a></li>
+      <li><a>Page 1</a></li>
+      <li><a>Page 2</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-container" ui-view></div>
+
+</body>
+
+</html>

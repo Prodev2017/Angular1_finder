@@ -1,0 +1,329 @@
+<myhomefinder-pane>
+
+    <div class="myhomefinder-wrapper clearfix">
+
+        <uib-tabset class="tabs">
+
+            <uib-tab>
+                <uib-tab-heading>
+                    <img src="images/property-list.svg" alt="Icon"> 
+                    <img class="img-active" src="images/property-list-active.svg" alt="Icon">
+                    <span>Property Lists</span>
+                </uib-tab-heading>
+                <div class="property-lists">
+                    <div class="container-fluid">
+                        <div class="header">
+                            <span class="title">My Property Lists</span>
+                            <p>
+                               Collect and Store your very own selection of prefered home listings
+                            </p>
+                            <button class="btn btn-primary btn-save" ui-sref="propertylist({name:'All Properties'})"><i class="fa fa-folder"></i> View All Saved Properties</button>
+
+                            <button class="btn btn-primary btn-save" ng-click="mhf.AddList()"><i class="fa fa-plus"></i> Create A New Property List</button>
+
+                        </div>
+
+                        <div class="table-responsive" ng-show="mhf.propertyLists.mylists.length > 0">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Last Updated</th>
+                                        <th>Properties</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr class="list" ng-repeat="list in mhf.propertyLists.mylists track by $index">
+                                        <td class="name"><a ui-sref="propertylist({name:list.name})" data-toggle="tooltip" title="Click to View Properties!">{{list.name}}</a></td>
+                                        <td class="updated">{{list.adddate}}</td>
+                                        <td class="count">{{list.propertycount}}</td>
+                                        <td class="actions"><i class="fa fa-pencil" ng-click="mhf.RenameList(list)"></i>&nbsp;&nbsp;&nbsp; <i class="fa fa-trash-o" ng-click="mhf.DeleteList(list)"></i></td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div class="header">
+
+                            <span class="title">Property Lists Create For Me</span>
+
+                        </div>
+
+                        <div class="table-responsive" ng-show="mhf.propertyLists.agentlists.length > 0">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Last Updated</th>
+                                        <th>Properties</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr class="list" ng-repeat="list in mhf.propertyLists.agentlists track by $index">
+                                        <td class="name"><a ui-sref="propertylist({name:list.name})" data-toggle="tooltip" title="Click to View Properties!">{{list.name}}</a></td>
+                                        <td class="updated">{{list.adddate}}</td>
+                                        <td class="count">{{list.count}}</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </uib-tab>
+
+            <uib-tab>
+
+                <uib-tab-heading>
+                    <img src="images/property-tours.svg" alt="Icon"> 
+                    <img class="img-active" src="images/property-tours-active.svg" alt="Icon">
+                    <span>Tours</span>
+                </uib-tab-heading>
+
+                <div class="property-tours">
+                    <div class="container-fluid">
+                        <div class="header">
+
+                            <span class="title">My Tours</span>
+
+                            <button class="btn btn-primary btn-save" ng-click="mhf.AddTour()"><i class="fa fa-plus"></i> Create A New Tour</button>
+
+                        </div>
+
+                        <div class="table-responsive" ng-show="mhf.tours.mytours.length > 0">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Created</th>
+                                        <th>Properties</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr class="list" ng-repeat="tour in mhf.tours.mytours">
+                                        <td class="name"><a ui-sref="propertytour({name:tour.name})" data-toggle="tooltip" title="Click to View Tour!">{{tour.name}}</a></td>
+                                        <td class="created">{{tour.adddate}}</td>
+                                        <td class="count">{{tour.propertycount}}</td>
+                                        <td class="actions"><i class="fa fa-pencil" ng-click="mhf.EditTour(tour)"></i>   &nbsp;&nbsp;&nbsp;<i class="fa fa-trash-o" ng-click="mhf.DeleteTour(tour)"></i></td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <br>
+
+                        <div class="header">
+
+                            <span class="title">Tours Created For Me</span>
+                            &nbsp;&nbsp;
+                        </div>
+
+                        <div class="table-responsive" ng-show="mhf.tours.agenttours.length > 0">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Created</th>
+                                        <th>Properties</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr class="list" ng-repeat="tour in mhf.tours.agenttours">
+                                        <td class="name"><a ui-sref="propertytour({id:{{tour.id}}})" data-toggle="tooltip" title="Click to View Tour!">{{tour.name}}</a></td>
+                                        <td class="created">{{tour.adddate}}</td>
+                                        <td class="count">{{tour.propertycount}}</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </uib-tab>
+
+            <uib-tab>
+                <uib-tab-heading>
+                    <img src="images/property-search.svg" alt="Icon">
+                    <img class="img-active" src="images/property-search-active.svg" alt="Icon">
+                    <span>Searches</span>
+                </uib-tab-heading>
+                <div class="saved-searches">
+                    <div class="container-fluid">
+
+                        <div class="header"><span class="title">My Searches</span></div>
+
+                        <div class="table-responsive"  ng-show="mhf.savedSearches.mysearches.length > 0">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Created</th>
+                                        <th>Area</th>
+                                        <th>Criteria</th>
+                                        <th>E-Mail Updates</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr class="list" ng-repeat="search in mhf.savedSearches.mysearches">
+                                        {{search.criteria}}
+                                        <td class="name"><a ui-sref="search({name:search.name})" data-toggle="tooltip" title="Click to Run Search!">{{search.name}}</a></td>
+                                        <td class="createdate">{{search.adddate}}</td>
+                                        <td class="area">
+                                            <span class="criteria-name" ng-bind-html="mhf.FormatQS(search.area)"></span>
+                                        </td>
+                                        <td class="criteria">
+                                            <span class="criteria-name ng-binding" ng-bind-html="mhf.FormatQS(search.criteria)"></span>
+                                        </td>
+                                        <td class="updates">
+                                            <select ng-model="search.updatefrequency"  ng-change="mhf.UpdateSearchFrequency(search)">
+                                                <option ng-repeat="option in mhf.updateOptions" value="{{option}}">{{option}}</option>
+                                            </select>
+                                        </td>
+                                        <td class="actions"><i class="fa fa-pencil" ng-click="mhf.RenameSearch(search)"></i>&nbsp;&nbsp;&nbsp; <i class="fa fa-trash-o" ng-click="mhf.DeleteSearch(search)"></i></td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <br>
+
+                        <div class=" header"><span class="title">Searches Created For Me</span></div>
+
+                        <div class="table-responsive" ng-show="mhf.savedSearches.agentsearches.length > 0">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Created</th>
+                                        <th>Area</th>
+                                        <th>Criteria</th>
+                                        <th>E-Mail Updates</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr class="list" ng-repeat="search in mhf.savedSearches.agentsearches">
+                                        <td class="name"><a ui-sref="search({name:search.name})" data-toggle="tooltip" title="Click to Run Search!">{{search.name}}</a></td>
+                                        <td class="createdate">{{search.adddate}}</td>
+                                        <td>
+                                            <span class="criteria-name" ng-bind-html="mhf.FormatQS(search.area)"></span>
+                                        </td>
+                                        <td class="criteria">
+                                            <span class="criteria-name" ng-bind-html="mhf.FormatQS(search.criteria)"></span>
+                                        </td>
+
+                                        <td class="updates">
+                                            <select ng-model="search.updatefrequency" ng-options="mhf.updateOptions.indexOf(selectedItem) as selectedItem for selectedItem in mhf.updateOptions" ng-change="mhf.UpdateSearchFrequency(search, selectedItem)"></select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+
+            <uib-tab>
+                <uib-tab-heading>
+                    <img src="images/property-profile.svg" alt="Icon"> 
+                    <img class="img-active" src="images/property-profile-active.svg" alt="Icon"> 
+                    <span>My Profile</span>
+                </uib-tab-heading>
+                <div class="contact-info">
+                    <div class="container-fluid">
+                        <h3 style="float:left">Contact Info</h3> <a ng-click="mhf.UpdatePassword()" class="change-password">Change Password</a>
+                        <form class="form-horizontal" method="post" action="#">
+
+                            <div class="form-group">
+                                <label class="col-sm-12">Name</label>
+                                <div class="col-sm-5">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="mhf.contactinfo.firstname" name="firstname"  placeholder="First Name"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="mhf.contactinfo.lastname" name="lastname"  placeholder="Last Name"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12">E-Mail Address</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                        <input type="emal" class="form-control" ng-model="mhf.contactinfo.email" name="email"  placeholder="Enter your Email"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12">Mobile Phone Number</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-mobile fa" aria-hidden="true"></i></span>
+                                        <input type="tel" class="form-control" name="mobilephone" ng-model="mhf.contactinfo.mobilephone" placeholder="Enter your Mobile Phone Number"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12">Alternate Phone Number</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                                        <input type="tel" class="form-control" name="homephone" ng-model="mhf.contactinfo.homephone" placeholder="Enter an Alternate Phone Number"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-10 text-right">
+                                    <a ng-click="mhf.UpdateContactInfo()" target="_blank" type="button" id="button" class="btn btn-primary btn-save">Update</a>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </uib-tab>
+
+        </uib-tabset>
+    </div>
+</myhomefinder-pane>
